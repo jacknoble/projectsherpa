@@ -1,12 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Sherpa</title>
+  <title></title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+	<%if logged_in?%>
+		<h4 align="right">
+			<%=current_user.fname%> <%=current_user.lname%>
+			<%=button_to("Logout", session_url, method: :delete)%>
+		</h4>
+	<%end%>
+
 	<%[*flash[:errors]].each do |error| %>
 		<li><%= error %></li>
 	<%end%>
