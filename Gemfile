@@ -8,9 +8,10 @@ gem 'bcrypt-ruby', '~> 3.0.0', :require => 'bcrypt'
 gem 'jbuilder'
 
 
-group :development, :testing do
+group :development, :test do
   gem 'rspec-rails'
   gem 'debugger'
+  gem 'shoulda-matchers'
 end
 # Gems used only for assets and not required
 # in production environments by default.

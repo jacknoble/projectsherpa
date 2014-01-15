@@ -12,6 +12,8 @@
 			<%=current_user.fname%> <%=current_user.lname%>
 			<%=button_to("Logout", session_url, method: :delete)%>
 		</h4>
+	<%else%>
+		<h4><%= link_to("Sign In", new_session_url)%></h4>
 	<%end%>
 
 	<%[*flash[:errors]].each do |error| %>

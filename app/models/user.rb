@@ -15,6 +15,11 @@ class User < ActiveRecord::Base
     primary_key: :id,
     foreign_key: :creator_id
   )
+
+  has_many :team_memberships
+
+  has_many :projects, :through => :team_memberships
+
   def self.generate_session_token
     SecureRandom.urlsafe_base64(16)
   end
