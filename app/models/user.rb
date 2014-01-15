@@ -9,7 +9,12 @@ class User < ActiveRecord::Base
 
   before_validation :ensure_session_token
 
-
+  has_many(
+    :created_projects,
+    class_name: "Project",
+    primary_key: :id,
+    foreign_key: :creator_id
+  )
   def self.generate_session_token
     SecureRandom.urlsafe_base64(16)
   end
