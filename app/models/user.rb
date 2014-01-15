@@ -20,7 +20,9 @@ class User < ActiveRecord::Base
   end
 
   def name=(name)
-    self.fname, self.lname = name.match(/^(\S*)\s(\S*)$/).captures
+    this.fname, this.lname = name.split(" ")
+    # This regex was here but is basically does the same
+    # self.fname, self.lname = name.match(/^(\S*)\s(\S*)$/).captures
   end
 
   def password=(pw)
