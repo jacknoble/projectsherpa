@@ -1,0 +1,50 @@
+<form
+	action="<%= users_url %>"
+	method="<%= (purpose == :new) ? 'post' : 'put' %>"
+>
+
+	<input
+		type="hidden"
+		name="authenticity_token"
+		value="<%= form_authenticity_token %>"
+	>
+	<label for="user_name">Your Full Name:</label>
+	<input
+		type="text"
+		name="user[name]"
+		id="user_name"
+		value="<%= (purpose == :new) ? "" : user.fname + " " + user.lname %>"
+	>
+	<br>
+
+	<br><label for="user_company">Company Name:</label>
+	<input
+		type="text"
+		name="user[company]"
+		id="user_company"
+		value="<%= user.company %>"
+	>
+	<br>
+
+	<label for="user_email">Your Email:</label>
+	<input
+		type="text"
+		name="user[email]"
+		id="user_email"
+		value="<%= user.email %>"
+	>
+	<br>
+
+	<label for="user_password">Password:</label>
+	<input
+		type="password"
+		name="user[password]"
+		id="user_password"
+	>
+	<br>
+
+	<input
+		type="submit"
+		value="<%= (purpose ==:new) ? "Register" : "Update Personal Info"%>"
+	>
+</form>
