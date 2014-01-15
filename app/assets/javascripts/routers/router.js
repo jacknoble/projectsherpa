@@ -10,7 +10,6 @@ Sherpa.Routers.Router = Backbone.Router.extend({
 
 	userShow: function() {
 		var user = Sherpa.user
-		var projects = this._getProjects
 		var userView = new Sherpa.Views.UserShow({model: user})
 		this._swapView(userView)
 	},
@@ -20,17 +19,5 @@ Sherpa.Routers.Router = Backbone.Router.extend({
 		this.$rootEl.html(view.render().$el)
 	},
 
-	_getProjects function() {
-		if(Sherpa.projects !== undefined) {
-			return Sherpa.projects
-		} else {
-			Sherpa.projects = new Sherpa.Collections.Projects()
-			Sherpa.projects.fetch({
-				success: function() {
-					return Sherpa.projects
-				}
-			})
-		}
-	}
 
 })

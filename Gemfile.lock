@@ -138,6 +138,7 @@ DEPENDENCIES
   backbone-on-rails
   bcrypt-ruby (~> 3.0.0)
   debugger
+  ejs
   jbuilder
   jquery-rails
   pg

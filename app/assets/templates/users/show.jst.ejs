@@ -1,0 +1,8 @@
+<h1><%=user.get('fname') + " " + user.get('lname')%></h1>
+<h3><%=user.get('company')%></h3>
+
+<ul>
+	<%user.get("projects").forEach(function(project) { %>
+		<li><%= project.get('title') %></li>
+	<%})%>
+</ul>

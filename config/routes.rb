@@ -1,5 +1,5 @@
 Sherpa::Application.routes.draw do
-  get "root/root"
+  get "root" => "root#root"
 
   resources :users, :only => [:new, :create]
   resource :session, :only => [:new, :create, :destroy]
