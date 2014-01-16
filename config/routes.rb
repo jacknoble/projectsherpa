@@ -6,10 +6,10 @@ Sherpa::Application.routes.draw do
 
   namespace :api, :defaults => {:format => :json} do
     resources :users, :only => [:show, :update, :destroy] do
-      resources :projects, :only => [:index, :create]
+      resources :projects, :only => [:index]
     end
 
-    resources :projects, :only => [:show, :update, :destroy] do
+    resources :projects, :only => [:show, :update, :create, :destroy] do
       resources :todo_lists, :only => [:index, :create]
     end
 

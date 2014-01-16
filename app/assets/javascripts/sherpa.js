@@ -9,7 +9,6 @@ window.Sherpa = {
 			var user = Sherpa.user = new Sherpa.Models.User({id: CURRENT_USER})
 			user.fetch({
 				success: function(data) {
-					console.log(data)
 					var router = Sherpa.router = new Sherpa.Routers.Router({$rootEl: $root});
 					Backbone.history.start();
 				}
