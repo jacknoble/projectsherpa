@@ -30,7 +30,7 @@ class User < ActiveRecord::Base
   end
 
   def name=(name)
-    this.fname, this.lname = name.split(" ")
+    self.fname, self.lname = name.split(" ")
     # This regex was here but is basically does the same
     # self.fname, self.lname = name.match(/^(\S*)\s(\S*)$/).captures
   end
