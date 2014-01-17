@@ -16,6 +16,8 @@
 //= require backbone
 //= require jquery.serializeJSON
 //= require jquery.ui.all
+//= require bootstrap
+//= require jquery.suggest
 //= require sherpa
 //= require_tree ../templates
 //= require_tree ./models

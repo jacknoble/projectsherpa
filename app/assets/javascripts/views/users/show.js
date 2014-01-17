@@ -9,8 +9,8 @@ Sherpa.Views.UserShow = Backbone.View.extend({
 
 	},
 	render: function() {
-
 		this.$el.html(this.template({user: this.model, projects: this.collection}))
+		this.$('.emp-name').draggable();
 		return this;
 	},
 

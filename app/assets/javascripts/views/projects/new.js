@@ -17,25 +17,18 @@ Sherpa.Views.NewProject = Backbone.View.extend({
 		return this
 	},
 
+
 	submit: function(event) {
 		event.preventDefault();
 		var $parsedData = $(event.target).serializeJSON();
 		var newProject = new Sherpa.Models.Project($parsedData)
+		newProject.employees
 		newProject.save({}, {
 			success: function() {
 				Sherpa.user.get("projects").add(newProject)
+				Backbone.history.navigate('/projects/' + newProject.get("id"))
 			}
 		})
-	},
-
-	getEmployeeNames: function() {
-		var names = []
-		this.collection.each (function (employee) {
-			var name = employee.get('fname') + " " + employee.get('lname')
-			names.push(name)
-		})
-		this.employeeNames = names
-		return names
 	},
 
 	newMemberInput: function() {
@@ -48,11 +41,14 @@ Sherpa.Views.NewProject = Backbone.View.extend({
 		var $tmForm = $(this.tm_template({
 			memberCount: count, employees: this.collection
 		}))
-		var $submitButton = this.$('#submit_button')
-		$tmForm.insertBefore($submitButton)
-		this.$('.member_form').last().autocomplete({
-			source: this.employeeNames || this.getEmployeeNames(),
-		  messages: { noResults: '', results: function() {} }
+		var $submitButton = this.$('#submit_button');
+		$tmForm.insertBefore($submitButton);
+		$tmForm.droppable({
+			drop: function(event, ui) {
+				var value = $(ui.draggable).text()
+				$(event.target).val(value)
+
+			}
 		})
 	},
 
