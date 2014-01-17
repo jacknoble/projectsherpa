@@ -16,6 +16,7 @@ Sherpa.Views.NewProject = Backbone.View.extend({
 		})
 		return this
 	},
+
 	submit: function(event) {
 		event.preventDefault();
 		var $parsedData = $(event.target).serializeJSON();
@@ -27,6 +28,16 @@ Sherpa.Views.NewProject = Backbone.View.extend({
 		})
 	},
 
+	getEmployeeNames: function() {
+		var names = []
+		this.collection.each (function (employee) {
+			var name = employee.get('fname') + " " + employee.get('lname')
+			names.push(name)
+		})
+		this.employeeNames = names
+		return names
+	},
+
 	newMemberInput: function() {
 		var memberForms = this.$('.member_form')
 		if (memberForms.length === 0){
@@ -34,9 +45,15 @@ Sherpa.Views.NewProject = Backbone.View.extend({
 		} else {
 			var count = $(memberForms.last()).data('id') + 1
 		}
-		var $tmForm = $(this.tm_template({memberCount: count}))
+		var $tmForm = $(this.tm_template({
+			memberCount: count, employees: this.collection
+		}))
 		var $submitButton = this.$('#submit_button')
 		$tmForm.insertBefore($submitButton)
+		this.$('.member_form').last().autocomplete({
+			source: this.employeeNames || this.getEmployeeNames(),
+		  messages: { noResults: '', results: function() {} }
+		})
 	},
 
 	checkIfFilled: function(event){

@@ -15,6 +15,7 @@
 //= require underscore
 //= require backbone
 //= require jquery.serializeJSON
+//= require jquery.ui.all
 //= require sherpa
 //= require_tree ../templates
 //= require_tree ./models

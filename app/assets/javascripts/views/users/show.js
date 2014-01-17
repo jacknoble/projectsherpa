@@ -15,7 +15,9 @@ Sherpa.Views.UserShow = Backbone.View.extend({
 	},
 
 	newProject: function() {
-		var newProjView = new Sherpa.Views.NewProject
+		var newProjView = new Sherpa.Views.NewProject({
+			collection: this.model.get("company").get("employees")
+		})
 		this.$el.append(newProjView.render().$el)
 	}
 })

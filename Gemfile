@@ -7,6 +7,7 @@ gem 'backbone-on-rails'
 gem 'bcrypt-ruby', '~> 3.0.0', :require => 'bcrypt'
 gem 'jbuilder'
 gem 'ejs'
+gem 'jquery-ui-rails'
 
 
 group :development, :test do

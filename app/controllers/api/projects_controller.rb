@@ -4,6 +4,7 @@ class Api::ProjectsController < ApplicationController
   def create
     params[:project][:creator_id] = current_user.id
     @project = Project.new(params[:project])
+    team
     if @project.save
       render :json => @project
     else

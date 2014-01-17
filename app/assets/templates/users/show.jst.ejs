@@ -14,7 +14,7 @@
 	<ul>
 		<%user.get("company").get("employees").forEach(function(employee) { %>
 			<%if (employee.id !== user.id){%>
-				<p><%=employee.fname%> <%=employee.lname%></p>
+				<p><%=employee.get('fname')%> <%=employee.get('lname')%></p>
 			<%}%>
 		<%});%>
 	</ul>
