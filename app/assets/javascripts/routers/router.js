@@ -6,7 +6,7 @@ Sherpa.Routers.Router = Backbone.Router.extend({
 
 	routes: {
 		'':'userShow',
-		"/projects/:id":"projectShow"
+		"projects/:id":"projectShow"
 	},
 
 	userShow: function() {
@@ -15,14 +15,16 @@ Sherpa.Routers.Router = Backbone.Router.extend({
 		this._swapView(userView)
 	},
 
-	projectShow: function() {
-
+	projectShow: function(id) {
+		var projects = Sherpa.user.get("projects")
+		var project = projects.get(id)
+		var projectView = new Sherpa.Views.ShowProject({model: project})
+		this._swapView(projectView);
 	},
 
 	_swapView: function(view) {
 		this.$rootEl.empty();
 		this.$rootEl.html(view.render().$el)
-	},
-
+	}
 
 })

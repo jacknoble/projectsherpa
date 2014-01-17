@@ -1,0 +1,8 @@
+<h1><%= project.get("title") %></h1>
+<h4><%= project.get("description") %></h4>
+
+<ul>
+	<%members.forEach(function (member){ %>
+		<li><%=member.get("fname")%> <%=member.get("lname")%></li>
+	<%})%>
+<ul>

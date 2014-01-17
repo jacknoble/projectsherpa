@@ -2,7 +2,8 @@ Sherpa.Views.NewProject = Backbone.View.extend({
 
 	events: {
 		"submit form#new_project_form" : "submit",
-		"focus .member_form": "checkIfFilled"
+		"focus .member_form": "checkIfFilled",
+		"keyup .member_form": "checkForNameMatch"
 	},
 
 	template: JST['projects/new'],
@@ -22,11 +23,14 @@ Sherpa.Views.NewProject = Backbone.View.extend({
 		event.preventDefault();
 		var $parsedData = $(event.target).serializeJSON();
 		var newProject = new Sherpa.Models.Project($parsedData)
-		newProject.employees
+		newProject.set('team_members')
 		newProject.save({}, {
-			success: function() {
+			success: function(model) {
 				Sherpa.user.get("projects").add(newProject)
-				Backbone.history.navigate('/projects/' + newProject.get("id"))
+				Sherpa.currentProject = model
+				Backbone.history.navigate('projects/' + newProject.get("id"),
+					{trigger: true}
+				)
 			}
 		})
 	},
@@ -45,9 +49,14 @@ Sherpa.Views.NewProject = Backbone.View.extend({
 		$tmForm.insertBefore($submitButton);
 		$tmForm.droppable({
 			drop: function(event, ui) {
-				var value = $(ui.draggable).text()
-				$(event.target).val(value)
-
+				var $member = $(ui.draggable)
+				var value = $member.text().replace(/\t*/, '')
+				var input = $(event.target)
+				input.val(value)
+				var id = $member.data('id')
+				var $id_field = $("#project_member_" + input.data('id')+ "_id")
+				$id_field.val(id)
+				$(ui.draggable).remove()
 			}
 		})
 	},
@@ -64,5 +73,17 @@ Sherpa.Views.NewProject = Backbone.View.extend({
 		})
 
 		return (allFilled) ? this.newMemberInput() : null
+	},
+
+	checkForNameMatch: function(event) {
+		var nameRE = /^\s*([a-zA-Z]*)\s*([a-zA-Z]*)/
+		var $memberInput = $(event.target)
+		var name = $memberInput.val().match(nameRE)
+		this.collection.forEach(function(employee) {
+			if (employee.get('fname') === name[1] && employee.get('lname') ===name[2]) {
+				var $id_field = $("#project_member_" + $memberInput.data('id')+ "_id")
+				$id_field.val(employee.get('id'))
+			}
+		})
 	}
 })

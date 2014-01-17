@@ -1,5 +1,5 @@
 class Project < ActiveRecord::Base
-  attr_accessible :creator_id, :title, :description
+  attr_accessible :creator_id, :title, :description, :team_member_ids
 
   validates :creator_id, :title, presence: true
 
@@ -11,7 +11,7 @@ class Project < ActiveRecord::Base
   )
 
   has_many :team_memberships
-  has_many :team_members, :through => :team_memberships, :source => :user_id
+  has_many :team_members, :through => :team_memberships, :source => :user
   has_many :todo_lists
 
   after_save :add_creator_as_member
