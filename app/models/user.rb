@@ -1,5 +1,8 @@
 class User < ActiveRecord::Base
-  attr_accessible :company, :email, :fname, :lname, :photo, :password, :name
+  attr_accessible(
+    :email, :fname, :lname, :photo, :password, :name,
+    :company_id, :company_name
+  )
   attr_reader :password
 
   validates :fname, :lname, :email,
@@ -20,8 +23,14 @@ class User < ActiveRecord::Base
 
   has_many :projects, :through => :team_memberships
 
+  belongs_to :company
+
   def self.generate_session_token
     SecureRandom.urlsafe_base64(16)
+  end
+
+  def company_name=(company_name)
+    nil
   end
 
   def self.find_by_credentials(user_params)

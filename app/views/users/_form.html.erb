@@ -17,12 +17,12 @@
 	>
 	<br>
 
-	<br><label for="user_company">Company Name:</label>
+	<br><label for="user_company_name">Company Name:</label>
 	<input
 		type="text"
-		name="user[company]"
+		name="user[company_name]"
 		id="user_company"
-		value="<%= user.company %>"
+		value="<%= user.company.name if user.company %>"
 	>
 	<br>
 

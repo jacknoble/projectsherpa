@@ -1,10 +1,22 @@
 <h1><%=user.get('fname') + " " + user.get('lname')%></h1>
-<h3><%=user.get('company')%></h3>
+<h3><%=user.get('company').get('name')%></h3>
 
 <ul>
 	<%user.get("projects").forEach(function(project) { %>
 		<li><%= project.get('title') %></li>
-	<%})%>
+	<%});%>
 </ul>
 
 <button id="new_project">Start New Project</button>
+
+<div align="right">
+	<h3>Other employees from your company:</h3>
+	<ul>
+		<%user.get("company").get("employees").forEach(function(employee) { %>
+			<%if (employee.id !== user.id){%>
+				<p><%=employee.fname%> <%=employee.lname%></p>
+			<%}%>
+		<%});%>
+	</ul>
+</div>
+

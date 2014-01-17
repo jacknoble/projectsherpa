@@ -40,20 +40,16 @@ Sherpa.Views.NewProject = Backbone.View.extend({
 	},
 
 	checkIfFilled: function(event){
-		console.log("checking")
 		var allFilled = true
 		var inputId = $(event.target).data('id')
 		var memberInputs = $('.member_form')
 		memberInputs.each(function(index) {
 			var $membInput = $(memberInputs[index])
-			console.log(inputId !== $membInput.data('id'), $membInput.val())
 			if ($membInput.val() === '' && $membInput.data('id') !== inputId) {
-				console.log("found empty box")
 				allFilled = false;
-				// break;
 			}
 		})
-		console.log(allFilled)
+
 		return (allFilled) ? this.newMemberInput() : null
 	}
 })
