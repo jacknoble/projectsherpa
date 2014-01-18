@@ -1,0 +1,11 @@
+<div id="other_employees" align="right">
+	<h3>Other employees from your company:</h3>
+	<ul>
+		<%user.get("company").get("employees").forEach(function(employee) { %>
+			<%if (employee.id !== user.id){%>
+<span class="emp-name"data-id="<%=employee.id%>"><%=employee.escape('fname')%> <%=employee.escape('lname')%></span>
+				<br>
+			<%}%>
+		<%});%>
+	</ul>
+</div>

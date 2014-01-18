@@ -1,0 +1,11 @@
+<div id="project_list">
+	<ul>
+		<%projects.forEach(function(project){ %>
+			<a href=<%= "#/projects/" + project.id%>>
+				<%= project.escape('title') %>
+			</a>
+			<br>
+		<%});%>
+	</ul>
+	<button id="new_project" class="btn btn-primary">Start New Project</button>
+</div>

@@ -3,4 +3,5 @@ class TodoList < ActiveRecord::Base
 
   validates :title, :project_id, :presence => true
   belongs_to :project
+  has_many :todo_list_items
 end

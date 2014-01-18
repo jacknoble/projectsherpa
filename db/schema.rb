@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140116224339) do
+ActiveRecord::Schema.define(:version => 20140117225216) do
 
   create_table "companies", :force => true do |t|
     t.string   "name"
@@ -35,6 +35,20 @@ ActiveRecord::Schema.define(:version => 20140116224339) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "todo_list_items", :force => true do |t|
+    t.string   "name",                                :null => false
+    t.integer  "assigned_user_id"
+    t.datetime "deadline"
+    t.boolean  "completed",        :default => false
+    t.integer  "todo_list_id"
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
+  end
+
+  add_index "todo_list_items", ["assigned_user_id"], :name => "index_todo_list_items_on_assigned_user_id"
+  add_index "todo_list_items", ["deadline"], :name => "index_todo_list_items_on_deadline"
+  add_index "todo_list_items", ["todo_list_id"], :name => "index_todo_list_items_on_todo_list_id"
 
   create_table "todo_lists", :force => true do |t|
     t.string   "title",       :null => false

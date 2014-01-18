@@ -20,9 +20,13 @@ class User < ActiveRecord::Base
   )
 
   has_many :team_memberships
-
   has_many :projects, :through => :team_memberships
-
+  has_many(
+    :assigned_items,
+    :class_name => "TodoListItem",
+    :primary_key => :id,
+    :foreign_key => :assigned_user_id
+  )
   belongs_to :company
 
   def self.generate_session_token
@@ -41,7 +45,7 @@ class User < ActiveRecord::Base
   def name=(name)
     self.fname, self.lname = name.split(" ")
     # This regex was here but is basically does the same
-    # self.fname, self.lname = name.match(/^(\S*)\s(\S*)$/).captures
+    # self.fname, self.lname = name.match(/^(\S*)\s*(\S*)$/).captures
   end
 
   def password=(pw)

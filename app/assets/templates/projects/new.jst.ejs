@@ -1,19 +1,21 @@
-<form id="new_project_form">
-	<input
-		type="text"
-		name="project[title]"
-		placeholder="Name the project"
-	>
-	<br>
-	<!-- what is the best way to keep the default description from getting sent?? -->
-	<textarea
-		name="project[description]"
-		placeholder="If you like, add a project description"
-	></textarea>
-	<br>
+<div id="new_project_div">
+	<form id="new_project_form">
+		<input
+			type="text"
+			name="project[title]"
+			placeholder="Name the project"
+		>
+		<br>
+		<textarea
+			name="project[description]"
+			placeholder="If you like, add a project description"
+		></textarea>
+		<br>
 
-	<label for="project_member_0">Invite people to join your project</label>
-	<br>
+		<label for="project_member_0">Invite people to join your project</label>
+		<br>
 
-	<input type="submit" id="submit_button" value="Start the project">
-</form>
+		<input class="btn btn-primary" type="submit" id="submit_button" value="Start the project">
+		<button id="cancel_project" class="btn">Cancel</button>
+	</form>
+</div>
