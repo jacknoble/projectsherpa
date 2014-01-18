@@ -7,7 +7,7 @@ end
 
 json.todo_lists do
 	json.array!(project.todo_lists) do |list|
-		json.(list, :id, :title, :description)
+		json.(list, :id, :title, :description, :project_id)
     json.todo_list_items do
       json.array!(list.todo_list_items) do |item|
         json.(item, :id, :name, :assigned_user_id, :completed, :deadline)

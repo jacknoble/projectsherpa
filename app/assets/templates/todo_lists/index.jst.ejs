@@ -1,7 +1,9 @@
+
+<button type="button" class="btn btn-default btn-lg new_todo_list">
+  <span class="glyphicon glyphicon-plus"></span>
+</button>
+
 <%lists.forEach(function(list) { %>
-	<button type="button" class="btn btn-default btn-lg">
-	  <span class="glyphicon glyphicon-plus"></span> Star
-	</button>
 	<h5><%=list.get('name')%></h5>
 	<ul>
 		<%list.get('items').forEach(function (item) {%>
