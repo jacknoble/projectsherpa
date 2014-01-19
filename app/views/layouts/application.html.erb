@@ -12,49 +12,49 @@
 	<li><%= error %></li>
 <%end%>
 
-<!-- body -->
-<body class="sherpaBasic">
-	<!-- nav -->
-	<% if logged_in?%>
-	<nav
-		class="navbar sherpaNav"
-		role="navigation"
-	>
-	<div class="navbar-header">
-		<div class="">
-			<a class="sherpaBrand" href="#"
-				class="navbar-brand dropdown-toggle"
-				data-toggle="dropdown">
-				Sherpa
-			</a>
-	    <ul class="dropdown-menu">
-				<%if logged_in?%>
-					<li><a href="#">Projects</a></li>
-					<li><a href="#calendar">Calendar</a></li>
-					<li><a href="#feed">Feed</a></li>
-					<li><%=link_to("Logout", session_url, :method => :delete)%></li>
-				<%else%>
-					<li><a href="<%= new_session_url %>">Login</a></li>
-					<li><a href="<%= new_user_url %>">Register</a></li>
-				<%end%>
-	    </ul>
-		</div>
+<!-- nav -->
+<% if logged_in?%>
+
+
+<nav
+	class="navbar sherpaNav"
+	role="navigation"
+>
+<div class="navbar-header">
+	<div class="">
+		<a class="sherpaBrand" href="#"
+			class="navbar-brand dropdown-toggle"
+			data-toggle="dropdown">
+			Sherpa
+		</a>
+    <ul class="dropdown-menu">
+			<%if logged_in?%>
+				<li><a href="#">Projects</a></li>
+				<li><a href="#calendar">Calendar</a></li>
+				<li><a href="#feed">Feed</a></li>
+				<li><%=link_to("Logout", session_url, :method => :delete)%></li>
+			<%else%>
+				<li><a href="<%= new_session_url %>">Login</a></li>
+				<li><a href="<%= new_user_url %>">Register</a></li>
+			<%end%>
+    </ul>
 	</div>
-			<ul class="nav navbar-nav pull-right">
-				<li><a href="#">
-					<%=current_user.name%> (<%=current_user.company.name%>)
-				</a></li>
-			</ul>
+</div>
+		<ul class="nav navbar-nav pull-right">
+			<li><a href="#">
+				<%=current_user.name%> (<%=current_user.company.name%>)
+			</a></li>
+		</ul>
 
 
-	</nav>
-	<%end%>
+</nav>
+<%end%>
 
+<!-- body -->
+<body style="background: #C9B8A7;">
 
-
-	<!-- end nav -->
 	<!-- container -->
-<div class="container-fluid" >
+<div class="sherpaBasic container" style="width: 80%; height: 100%" >
 	<%= yield %>
 </div>
 

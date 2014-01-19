@@ -1,14 +1,4 @@
 Sherpa::Application.routes.draw do
-  get "todo_lists/index"
-
-  get "todo_lists/create"
-
-  get "todo_lists/show"
-
-  get "todo_lists/update"
-
-  get "todo_lists/destroy"
-
   root to: "root#root"
 
   resources :users, :only => [:new, :create]
@@ -23,7 +13,11 @@ Sherpa::Application.routes.draw do
       resources :todo_lists, :only => [:index, :create]
     end
 
-    resources :todo_lists, :only => [:show, :update, :destroy]
+    resources :todo_lists, :only => [:show, :update, :destroy] do
+      resources :todo_list_items, :only =>[:index, :create]
+    end
+
+    resources :todo_list_items, :only => [:show, :update, :destroy]
   end
 
 

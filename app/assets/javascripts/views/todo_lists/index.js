@@ -2,12 +2,10 @@ Sherpa.Views.TodoListIndex = Backbone.View.extend({
 	initialize: function(options) {
 		this.listenTo(this.collection, "add remove change:title reset", this.render)
 	},
-	attributes: {
-		class: ""
-	},
+
 	template: JST["todo_lists/index"],
 	events: {
-		"click button.new_todo_list":"newTodoListForm"
+		"click button.new_todo_list":"newTodoListForm",
 	},
 	render: function () {
 		this.$el.html(this.template())

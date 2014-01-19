@@ -5,7 +5,19 @@ $leather: #813a26;
 $swimSuitRed: #d94c3a;
 $smog: #e8c571 ;
 
-.sherpaBrand {
+a:link{
+	color: black;
+}
+
+a:visited {
+	color: black;
+}
+
+a:hover{
+
+}
+
+a.sherpaBrand {
 	color: $mustangTeal;
 	font-size: 28px;
 	font-family: "Times New Roman";
@@ -23,20 +35,13 @@ $smog: #e8c571 ;
 }
 
 .sherpaBasic {
-	background: $cream;
+	background: white;
 }
 
-a:link{
-	color: black;
+.subtle-form-input {
+	border: none;
+	background: transparent;
+	border-bottom: 1px dotted gray;
+	outline: none;
 }
 
-a:visited {
-	color: black;
-}
-
-a:hover{
-
-}
-//a{
-//	color: $cream;
-//}

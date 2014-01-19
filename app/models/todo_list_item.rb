@@ -9,4 +9,6 @@ class TodoListItem < ActiveRecord::Base
     :primary_key => :id,
     :foreign_key => :assigned_user_id
   )
+
+  belongs_to :todo_list
 end
