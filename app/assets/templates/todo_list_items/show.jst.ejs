@@ -1,0 +1,7 @@
+<%var assigned = todo.get('assigned_user')%>
+<%var due = todo.get('deadline')%>
+<div>
+	<span class="todo-name"><%=todo.get('name')%></span>
+	<span class="assign-user"><%=(assigned) ? assigned : "Unassigned"%></span>
+	<span class="deadline"><%=(due) ? due : "No deadline"%>
+</div>

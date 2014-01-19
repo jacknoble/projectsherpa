@@ -3,7 +3,7 @@
 	<ul>
 		<%user.get("company").get("employees").forEach(function(employee) { %>
 			<%if (employee.id !== user.id){%>
-<span class="emp-name"data-id="<%=employee.id%>"><%=employee.escape('fname')%> <%=employee.escape('lname')%></span>
+<span class="emp-name"data-id="<%=employee.id%>"><%=employee.escape('name')%> </span>
 				<br>
 			<%}%>
 		<%});%>

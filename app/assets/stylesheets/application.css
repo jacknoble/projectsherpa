@@ -13,4 +13,6 @@
  *= require bootstrap
  */
 
+.input-mysize { width: 360px }
+@import "layout"
 @import "bootstrap";

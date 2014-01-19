@@ -19,4 +19,5 @@ class Project < ActiveRecord::Base
   def add_creator_as_member
     TeamMembership.create!(user_id: self.creator_id, project_id: self.id)
   end
+
 end

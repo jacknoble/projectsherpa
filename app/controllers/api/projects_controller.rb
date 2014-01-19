@@ -11,7 +11,7 @@ class Api::ProjectsController < ApplicationController
     @project.team_member_ids = team_ids
 
     if @project.save
-      render 'api/projects/show', handles: [:jbuilder]
+      render :partial => 'api/projects/project'
     else
       render :json => @project.errors.full_messages,
       :stats => :unprocessable_entity

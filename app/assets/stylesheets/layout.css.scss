@@ -1,0 +1,42 @@
+$mustangTeal: #54a992;
+$lightMustangTeal: #8fb59c;
+$cream: #eddbc3;
+$leather: #813a26;
+$swimSuitRed: #d94c3a;
+$smog: #e8c571 ;
+
+.sherpaBrand {
+	color: $mustangTeal;
+	font-size: 28px;
+	font-family: "Times New Roman";
+
+}
+
+.sherpaBrand:hover {
+	color: $cream ;
+	text-decoration: none;
+}
+
+.sherpaNav {
+	color: $leather;
+	background: $leather;
+}
+
+.sherpaBasic {
+	background: $cream;
+}
+
+a:link{
+	color: black;
+}
+
+a:visited {
+	color: black;
+}
+
+a:hover{
+
+}
+//a{
+//	color: $cream;
+//}

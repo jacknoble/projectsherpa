@@ -5,12 +5,12 @@ class User < ActiveRecord::Base
   )
   attr_reader :password
 
-  validates :fname, :lname, :email,
+  validates :name, :fname, :lname, :email,
             :session_token, :password_digest,
             :presence => true
   validates :password, length: {minimum: 6}, if: :password_present?
 
-  before_validation :ensure_session_token
+  before_validation :ensure_session_token, :add_lname_fname
 
   has_many(
     :created_projects,
@@ -42,12 +42,6 @@ class User < ActiveRecord::Base
     (user && user.has_password?(user_params[:password])) ? user : nil
   end
 
-  def name=(name)
-    self.fname, self.lname = name.split(" ")
-    # This regex was here but is basically does the same
-    # self.fname, self.lname = name.match(/^(\S*)\s*(\S*)$/).captures
-  end
-
   def password=(pw)
     @password = pw
     self.password_digest = BCrypt::Password.create(pw)
@@ -66,6 +60,10 @@ class User < ActiveRecord::Base
 
   def ensure_session_token
     self.session_token ||= User.generate_session_token
+  end
+
+  def add_lname_fname
+    self.fname, self.lname = self.name.split(" ")
   end
 
   def password_present?

@@ -6,7 +6,8 @@ Sherpa.Routers.Router = Backbone.Router.extend({
 
 	routes: {
 		'':'userShow',
-		"projects/:id":"projectShow"
+		"projects/:id":"projectShow",
+		"logout":"logout"
 	},
 
 	userShow: function() {
@@ -17,7 +18,7 @@ Sherpa.Routers.Router = Backbone.Router.extend({
 
 	projectShow: function(id) {
 		var projects = Sherpa.user.get("projects")
-		var project = projects.get(id)
+		var project = Sherpa.currentProject = projects.get(id)
 		var projectView = new Sherpa.Views.ShowProject({model: project})
 		this._swapView(projectView);
 	},

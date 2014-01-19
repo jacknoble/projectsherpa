@@ -3,7 +3,7 @@ class TodoListItem < ActiveRecord::Base
 
   validates :name, :presence => true
 
-  belongs_to: (
+  belongs_to(
     :user,
     :class_name => "User",
     :primary_key => :id,

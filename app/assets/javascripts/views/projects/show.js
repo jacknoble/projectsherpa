@@ -15,8 +15,10 @@ Sherpa.Views.ShowProject = Backbone.View.extend({
 
 	showTodos: function(event) {
 		event.preventDefault()
-		var todoLists = this.model.get('todo_lists')
-		var todoListsIndex = new Sherpa.Views.TodoListIndex({collection: todoLists});
+		var todoListsIndex = new Sherpa.Views.TodoListIndex({
+			collection: this.model.get('todo_lists'),
+			team_members: this.model.get('team_members')
+		});
 		this.$('#todos').html(todoListsIndex.render().$el)
 	}
 

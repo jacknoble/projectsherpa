@@ -9,7 +9,6 @@ Sherpa.Views.UserShow = Backbone.View.extend({
 	events: {
 		"click button#new_project":"toggleLeftBumper",
 		"click button#cancel_project":"toggleLeftBumper"
-
 	},
 	render: function() {
 		this.$el.html(this.template({user: this.model}))

@@ -1,0 +1,7 @@
+<h5><%=list.get('title')%></h5>
+<ul>
+	<%list.get('todo_list_items').forEach(function (item) {%>
+		<li><a><%=item.get('name')%></a></li>
+	<%})%>
+</ul>
+<a href="#" id="add_todo" style="font-size: 10px">Add a todo</a>

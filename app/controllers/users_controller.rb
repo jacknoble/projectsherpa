@@ -1,15 +1,9 @@
 class UsersController < ApplicationController
 
   def create
-    @company = Company.find_by_name(params[:user][:company_name])
-    if @company
-      params[:user][:company_id] = @company.id
-      @user = User.new(params[:user])
-    else
-       @user = User.new(params[:user])
-       @user.company = Company.new(name: params[:user][:company_name])
-    end
-
+    @company = Company.find_or_create_by_name(params[:user][:company_name])
+    @user = User.new(params[:user])
+    @user.company = @company
     if @user.save
       login!(@user)
       redirect_to (:root)

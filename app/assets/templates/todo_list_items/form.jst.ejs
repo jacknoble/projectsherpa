@@ -1,0 +1,23 @@
+<form class="form-inline" role="form">
+		<input
+			class="input-sm"
+			type="text"
+			name="todo_list_item[name]"
+			id="todo_list_name"
+			placeholder="To-do name"
+			value="<%=todo.get('name')%>"
+		>
+		<select name="assigned_user">
+			<option value="" disabled selected>Assign this task</option>
+			<%members.forEach(function(member){ %>
+				<option
+					value="<%=member.escape('id')%>"
+					<%var assigned = todo.get('assigned_user')%>
+					<%=(assigned && assigned.id === member.id) ? "selected" : ''%>
+			>
+					<%=member.escape('name')%>
+				</option>
+			<% }) %>
+		</select>
+		<input class="btn btn-sm" type="submit" value="Add this todo">
+</form>

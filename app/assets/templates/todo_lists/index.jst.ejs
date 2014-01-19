@@ -1,13 +1,4 @@
-
-<button type="button" class="btn btn-default btn-lg new_todo_list">
-  <span class="glyphicon glyphicon-plus">  Add To-Do list</span>
+<button type="button" class="btn btn-default btn new_todo_list">
+  <span class="glyphicon glyphicon-plus" style="font-size: 12px">  Add To-Do list</span>
 </button>
 
-<%lists.forEach(function(list) { %>
-	<h5><%=list.get('name')%></h5>
-	<ul>
-		<%list.get('items').forEach(function (item) {%>
-			<li><a><%=item.get('name')%></a></li>
-		<%})%>
-	</ul>
-<%})%>

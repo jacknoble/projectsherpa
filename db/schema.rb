@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140117225216) do
+ActiveRecord::Schema.define(:version => 20140118224123) do
 
   create_table "companies", :force => true do |t|
     t.string   "name"
@@ -51,11 +51,10 @@ ActiveRecord::Schema.define(:version => 20140117225216) do
   add_index "todo_list_items", ["todo_list_id"], :name => "index_todo_list_items_on_todo_list_id"
 
   create_table "todo_lists", :force => true do |t|
-    t.string   "title",       :null => false
-    t.string   "description"
-    t.integer  "project_id",  :null => false
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.string   "title",      :null => false
+    t.integer  "project_id", :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   add_index "todo_lists", ["project_id"], :name => "index_todo_lists_on_project_id"
@@ -70,6 +69,7 @@ ActiveRecord::Schema.define(:version => 20140117225216) do
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
     t.integer  "company_id"
+    t.string   "name",            :null => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
