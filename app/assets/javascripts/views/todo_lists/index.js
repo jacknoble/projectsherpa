@@ -10,11 +10,22 @@ Sherpa.Views.TodoListIndex = Backbone.View.extend({
 	render: function () {
 		this.$el.html(this.template())
 		var that = this;
-		this.collection.each( function (todo_list) {
-			var listView = new Sherpa.Views.ShowTodoList({model: todo_list})
-			that.$el.append(listView.render().$el)
-		})
-		return this;
+		var lastId = this.collection.last().id
+		var $div = $('<div>')
+		var showEachList = function(list, callback){
+		 	var listView = new Sherpa.Views.ShowTodoList({model: list})
+		 	$div.append(listView.render().$el)
+ 			if (list.id === lastId){
+ 				return callback($div);
+ 			}
+		}
+		showEachList.bind(this)
+
+		this.collection.each(function(list) {
+			showEachList(list, function(div){
+				this.$el = div;
+			})
+		});
 	},
 
 	newTodoListForm: function() {

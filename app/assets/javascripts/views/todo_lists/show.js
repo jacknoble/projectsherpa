@@ -7,7 +7,7 @@ Sherpa.Views.ShowTodoList = Backbone.View.extend({
 	events: {
 		"click #add_todo":"newTodo",
 		// "mouseover .toggle-edit":"toggleEdit",
-// 		"mouseout .toggle-show":"toggleShow"
+		// "mouseout .toggle-show":"toggleShow"
 	},
 
 	template: JST['todo_lists/show'],

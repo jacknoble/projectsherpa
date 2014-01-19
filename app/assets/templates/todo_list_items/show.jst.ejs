@@ -1,7 +1,5 @@
 <%var assigned = todo.escape('assigned_user')%>
 <%var due = todo.escape('deadline')%>
-<div class="toggleable">
-	<span><%=(todo.get('name')) ? todo.escape('name') : 'Give the todo a name'%></span>
-	<span id="assign_user" ><%=(assigned) ? assigned : "Unassigned"%></span>
-	<span id="due-date"><%=(due) ? due : "No deadline"%>
-</div>
+<span><%=(todo.get('name')) ? todo.escape('name') : 'Give the todo a name'%></span>
+<span id="assign_user" ><%=(assigned) ? assigned : "Unassigned"%></span>
+<span id="due-date"><%=(due) ? due : "No deadline"%>
