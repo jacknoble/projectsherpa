@@ -11,7 +11,7 @@ json.todo_lists do
 		json.(list, :id, :title, :project_id)
     json.todo_list_items do
       json.array!(list.todo_list_items) do |item|
-        json.(item, :id, :name, :assigned_user_id, :completed, :deadline)
+        json.partial!("api/todo_list_items/todo_list_item", item: item)
       end
     end
   end

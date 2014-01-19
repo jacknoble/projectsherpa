@@ -25,7 +25,7 @@ Sherpa.Views.TodoForm = Backbone.View.extend({
 		var id = data.todo_list_item.todo_list_id
 		var list = Sherpa.currentProject.get("todo_lists").get(id)
 		list.get('todo_list_items').add(data)
-		var newTodo = new Sherpa.Models.TodoListItem(data)
+		var newTodo = new Sherpa.Models.TodoListItem(data.todo_list_item)
 		newTodo.save({}, {
 			success: function() {
 				list.get('todo_list_items').add(newTodo)

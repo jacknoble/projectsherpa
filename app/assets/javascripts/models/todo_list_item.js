@@ -7,9 +7,9 @@ Sherpa.Models.TodoListItem = Backbone.Model.extend({
 
 	methodToURL: function(method) {
 		if (method === 'create') {
-			return "/api/projects/" + Sherpa.currentProject.id + "/todo_lists"
+			return "/api/todo_lists/" + this.get('todo_list_id') + "/todo_list_items"
 		} else {
-			return "/api/todo_lists/" + this.get('id')
+			return "/api/todo_list_items/" + this.get('id')
 		}
 
 	},
