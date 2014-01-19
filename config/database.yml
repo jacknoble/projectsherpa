@@ -7,6 +7,8 @@ development:
   adapter: postgresql
   database: sherpa_dev
   host: localhost
+  username: sherpa
+  password: sherpa
   pool: 5
   timeout: 5000
 
@@ -17,6 +19,8 @@ test:
   adapter: postgresql
   database: sherpa_test
   host: localhost
+  username: sherpa
+  password: sherpa
   pool: 5
   timeout: 5000
 
