@@ -1,6 +1,6 @@
 Sherpa.Views.TodoListIndex = Backbone.View.extend({
 	initialize: function(options) {
-		this.listenTo(this.collection, "add remove change:title reset", this.render)
+
 	},
 	attributes: {
 		class: ""
@@ -16,6 +16,7 @@ Sherpa.Views.TodoListIndex = Backbone.View.extend({
 		var that = this;
 		this.collection.each(function (todo_list) {
 			var listView = new Sherpa.Views.ShowTodoList({model: todo_list})
+			debugger
 			that.$el.append(listView.render().$el)
 		})
 		return this;
@@ -25,6 +26,7 @@ Sherpa.Views.TodoListIndex = Backbone.View.extend({
 		var newListView = new Sherpa.Views.NewTodoList({
 			collection: this.team_members
 		})
+		console.log(this)
 		this.$el.prepend(newListView.render().$el)
 	}
 })

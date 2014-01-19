@@ -15,11 +15,11 @@ Sherpa.Views.ShowTodoList = Backbone.View.extend({
 	render : function() {
 		this.$el.html(this.template({list: this.model}))
 		var items = this.model.get("todo_list_items")
+		var that = this
 		items.each(function (item) {
 			var showTodo = new Sherpa.Views.ShowTodo({model: item})
-			$(this.$.find('#todo_index')).append(showTodo.render().$el)
+			$(that.$el.find('#todo_index')).append(showTodo.render().$el)
 		})
-
 		return this;
 	},
 
