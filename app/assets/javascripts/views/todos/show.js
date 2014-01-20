@@ -1,8 +1,6 @@
 Sherpa.Views.ShowTodo = Backbone.View.extend({
 	template: JST['todo_list_items/show'],
-	attributes: {
-		class: "toggle-edit",
-	},
+
 	events: {
 		"click check-off":"completeTodo"
 	},

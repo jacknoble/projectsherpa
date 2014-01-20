@@ -3,6 +3,6 @@ Sherpa.Views.ShowCalendar = Backbone.View.extend({
 	  this.$el.fullCalendar({
 			// put your options and callbacks here
 		})
-		return this
+		return this;
 	}
 })
