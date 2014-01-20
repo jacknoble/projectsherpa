@@ -9,6 +9,7 @@ Sherpa.Views.NewTodoList = Backbone.View.extend({
 		return this;
 	},
 	submit: function(event) {
+		console.log("getting here")
 		event.preventDefault();
 		var todoData = $(event.target).serializeJSON();
 		var newTodo = new Sherpa.Models.TodoList(todoData)

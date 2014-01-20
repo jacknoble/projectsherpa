@@ -19,7 +19,6 @@ Sherpa.Views.TodoForm = Backbone.View.extend({
 			members: Sherpa.currentProject.get("team_members")
 		}));
 		this.$el.data('id', this.model.id);
-		console.log(this.$el.data('id'))
 		return this;
 	},
 
