@@ -18,7 +18,6 @@ Sherpa.Views.NewProject = Backbone.View.extend({
 		return this
 	},
 
-
 	submit: function(event) {
 		event.preventDefault();
 		var $parsedData = $(event.target).serializeJSON();

@@ -1,4 +1,4 @@
-<%var assigned = todo.get('assigned_user')%>
+<%var assigned = todo.assigned_user%>
 <%var due = todo.get('deadline')%>
 
 
@@ -7,6 +7,12 @@
 		<button id="delete" data-id="<%=todo.id%>">
 			<span class="glyphicon glyphicon-trash"></span>
 		</button>
+
+		<input
+			type="hidden"
+			name="todo_list_item[id]"
+			value="<%=todo.get('id')%>"
+		>
 	<%}%>
 	<input
 		class="input-sm subtle-form-input"
@@ -43,11 +49,7 @@
 		name="todo_list_item[todo_list_id]"
 		value="<%=todo.get('todo_list_id')%>"
 	>
-	<input
-		type="hidden"
-		name="todo_list_item[id]"
-		value="<%=todo.get('id')%>"
-	>
+
 	<input
 		id="create-update"
 		class="btn btn-xs"

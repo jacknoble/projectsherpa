@@ -11,6 +11,7 @@
  *= require_self
  *= require_tree .
  *= require bootstrap
+ *= require fullcalendar
  */
 
 .input-mysize { width: 360px }

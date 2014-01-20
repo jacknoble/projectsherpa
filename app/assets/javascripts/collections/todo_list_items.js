@@ -1,3 +1,5 @@
 Sherpa.Collections.TodoListItems = Backbone.Collection.extend({
-	model: Sherpa.Models.TodoListItem
+	model: Sherpa.Models.TodoListItem,
+
+
 })
