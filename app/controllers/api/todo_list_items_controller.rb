@@ -9,4 +9,19 @@ class Api::TodoListItemsController < ApplicationController
       :status => :unprocessable_entity
     end
   end
+
+  def update
+    @todo_list_item = TodoListItem.find(params[:id])
+    if @todo_list_item.update_attributes(params[:todo_list_item])
+      render :json => @todo_list_item
+    else
+      render :json => 422
+    end
+  end
+
+  def destroy
+    @todo_list_item = TodoListItem.find(params[:id])
+    @todo_list_item.destroy
+    head :ok
+  end
 end

@@ -8,15 +8,12 @@ Sherpa.Views.TodoListIndex = Backbone.View.extend({
 	template: JST["todo_lists/index"],
 	events: {
 		"click button.new_todo_list":"newTodoListForm",
-		"mouseover .toggleable":"toggleEdit",
-		"mouseout .toggleable":"toggleShow"
 	},
 	render: function () {
 		this.$el.html(this.template())
 		var that = this;
 		this.collection.each(function (todo_list) {
 			var listView = new Sherpa.Views.ShowTodoList({model: todo_list})
-			debugger
 			that.$el.append(listView.render().$el)
 		})
 		return this;

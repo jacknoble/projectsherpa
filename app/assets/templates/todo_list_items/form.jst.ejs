@@ -1,49 +1,62 @@
 <%var assigned = todo.get('assigned_user')%>
 <%var due = todo.get('deadline')%>
-<div class="toggleable">
-	<form class="form-inline" role="form">
-		<input
-			class="input-sm subtle-form-input"
-			type="text"
-			name="todo_list_item[name]"
-			id="todo_list_name"
-			placeholder="To-do name"
-			value="<%=todo.get('name')%>"
-		>
-		<select
-			name="todo_list_item[assigned_user_id]"
-			id="assign_user"
-		>
-			<option value="" disabled selected>Assign this task</option>
-			<%members.forEach(function(member){ %>
-				<option
-					value="<%=member.escape('id')%>"
-					<%var assigned = todo.get('assigned_user')%>
-					<%=(assigned && assigned.id === member.id) ? "selected" : ''%>
-			>
-					<%=member.escape('name')%>
-				</option>
-			<% }) %>
-		</select>
-		<input
-			type="date"
-			id="due-date"
-			name="todo_list_item[deadline]"
-			class="input-sm subtle-form-input"
-		>
-		<input
-			id="create-update"
-			class="btn btn-xs"
-			type="submit"
-			value="<%=(todo.id) ? 'Update Todo' : 'Add Todo'%>">
 
-		<input
-			type="hidden"
-			name="todo_list_item[todo_list_id]"
-			value="<%=todo.get('todo_list_id')%>"
+
+<form class="form-inline" role="form">
+	<%if (todo.id) { %>
+		<button id="delete" data-id="<%=todo.id%>">
+			<span class="glyphicon glyphicon-trash"></span>
+		</button>
+	<%}%>
+	<input
+		class="input-sm subtle-form-input"
+		type="text"
+		name="todo_list_item[name]"
+		id="todo_list_name"
+		placeholder="To-do name"
+		value="<%=todo.get('name')%>"
+	>
+	<select
+		name="todo_list_item[assigned_user_id]"
+		id="assign_user"
+	>
+		<option value="" disabled selected>Assign this task</option>
+		<%members.forEach(function(member){ %>
+			<option
+				value="<%=member.escape('id')%>"
+				<%var assigned = todo.get('assigned_user')%>
+				<%=(assigned && assigned.id === member.id) ? "selected" : ''%>
 		>
-	</form>
-</div>
+				<%=member.escape('name')%>
+			</option>
+		<% }) %>
+	</select>
+	<input
+		type="date"
+		id="due-date"
+		name="todo_list_item[deadline]"
+		class="input-sm subtle-form-input"
+	>
+
+	<input
+		type="hidden"
+		name="todo_list_item[todo_list_id]"
+		value="<%=todo.get('todo_list_id')%>"
+	>
+	<input
+		type="hidden"
+		name="todo_list_item[id]"
+		value="<%=todo.get('id')%>"
+	>
+	<input
+		id="create-update"
+		class="btn btn-xs"
+		type="submit"
+		value="<%=(todo.id) ? 'Update Todo' : 'Add Todo'%>"
+	>
+	<button class="btn btn-xs" id="cancel" data-id="<%=todo.escape('id')%>">X</button>
+
+</form>
 <script>
   $(function() {
     $( "#due-date" ).datepicker();
