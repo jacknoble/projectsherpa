@@ -21,7 +21,10 @@ class Api::ProjectsController < ApplicationController
   def index
   end
 
-  def new
+  def destroy
+    @project = Project.find(params[:id])
+    @project.destroy
+    render :json => {}
   end
 
 end
