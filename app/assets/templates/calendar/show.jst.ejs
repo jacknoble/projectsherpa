@@ -1,0 +1,19 @@
+<div id="cal">
+</div>
+<script>
+$(function() {
+
+	$('#cal').fullCalendar({
+		events: '/api/events',
+		editable: true,
+		eventStartEditable: true,
+		eventDrop: function(eventData) {
+			var event = Sherpa.Collections.todos.get(eventData.id);
+			event.save({deadline: eventData.start}, {
+				success: function(){
+				}
+			})
+		}
+	});
+});
+</script>
