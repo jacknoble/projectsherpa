@@ -34,7 +34,7 @@ Sherpa.Routers.Router = Backbone.Router.extend({
 		var that = this;
 		todos.fetch({
 			success: function() {
-				var calView = new Sherpa.Views.ShowCalendar()
+				var calView = new Sherpa.Views.ShowCalendar({collection: todos})
 				that._swapView(calView)
 			}
 		})

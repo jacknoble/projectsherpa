@@ -4,6 +4,7 @@ $cream: #eddbc3;
 $leather: #813a26;
 $swimSuitRed: #d94c3a;
 $smog: #e8c571 ;
+$bubblegum: #FF85AD;
 
 a:link{
 	color: black;
@@ -45,3 +46,10 @@ a.sherpaBrand {
 	outline: none;
 }
 
+a.bubbleGum {
+	color: #FF85AD;
+}
+a.bubbleGum:hover {
+
+	color: #FF9DBD;
+}

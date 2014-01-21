@@ -27,7 +27,7 @@
 			data-toggle="dropdown">
 			Sherpa
 		</a>
-    <ul class="dropdown-menu">
+    <ul class="nav navbar-nav pull-left">
 			<%if logged_in?%>
 				<li><a href="#">Projects</a></li>
 				<li><a href="#calendar">Calendar</a></li>
@@ -54,7 +54,7 @@
 <body style="background: #C9B8A7;">
 
 	<!-- container -->
-<div class="sherpaBasic container" style="width: 80%; height: 100%" >
+<div class="sherpaBasic container" style="width: 80%; height: auto; min-height: 500px" >
 	<%= yield %>
 </div>
 
