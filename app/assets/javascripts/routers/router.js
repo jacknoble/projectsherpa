@@ -20,13 +20,24 @@ Sherpa.Routers.Router = Backbone.Router.extend({
 	projectShow: function(id) {
 		var projects = Sherpa.user.get("projects")
 		var project = Sherpa.currentProject = projects.get(id)
-		var projectView = new Sherpa.Views.ShowProject({model: project})
-		this._swapView(projectView);
+		var that = this
+		project.fetch({
+			success: function(){
+				var projectView = new Sherpa.Views.ShowProject({model: project})
+				that._swapView(projectView);
+			}
+		})
 	},
 
 	calendar: function() {
-		var calView = new Sherpa.Views.ShowCalendar()
-		this._swapView(calView)
+		var todos = new Sherpa.Collections.TodoListItems();
+		var that = this;
+		todos.fetch({
+			success: function() {
+				var calView = new Sherpa.Views.ShowCalendar()
+				that._swapView(calView)
+			}
+		})
 	},
 
 	_swapView: function(view) {

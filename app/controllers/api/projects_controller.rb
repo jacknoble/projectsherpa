@@ -27,4 +27,9 @@ class Api::ProjectsController < ApplicationController
     render :json => {}
   end
 
+  def show
+    @project = Project.find(params[:id])
+    render :partial => 'api/projects/project'
+  end
+
 end

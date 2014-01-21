@@ -24,4 +24,9 @@ class Api::TodoListItemsController < ApplicationController
     @todo_list_item.destroy
     render :json => {}
   end
+
+  def index
+    @todo_list_items = current_user.assigned_items
+    render :json => @todo_list_items
+  end
 end

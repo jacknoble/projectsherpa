@@ -17,7 +17,7 @@ Sherpa::Application.routes.draw do
       resources :todo_list_items, :only =>[:index, :create]
     end
 
-    resources :todo_list_items, :only => [:show, :update, :destroy]
+    resources :todo_list_items, :only => [:show, :update, :destroy, :index]
 
     resources :events, :only => [:index, :show]
   end
