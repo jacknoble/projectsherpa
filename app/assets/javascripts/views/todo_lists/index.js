@@ -3,17 +3,16 @@ Sherpa.Views.TodoListIndex = Backbone.View.extend({
 		this.listenTo(this.collection, "add remove change:title reset", this.render)
 	},
 	attributes: {
-		class: ""
+		class: "col-md"
 	},
 	template: JST["todo_lists/index"],
 	events: {
-		"click button.new_todo_list":"newTodoListForm",
-
+		"click button.new_todo_list":"newTodoListForm"
 	},
 	render: function () {
 		this.$el.html(this.template())
 		var that = this;
-		this.collection.each(function (todo_list) {
+		this.collection.each( function (todo_list) {
 			var listView = new Sherpa.Views.ShowTodoList({model: todo_list})
 			that.$el.append(listView.render().$el)
 		})
@@ -24,7 +23,6 @@ Sherpa.Views.TodoListIndex = Backbone.View.extend({
 		var newListView = new Sherpa.Views.NewTodoList({
 			collection: this.team_members
 		})
-		console.log(this)
 		this.$el.prepend(newListView.render().$el)
 	}
 })

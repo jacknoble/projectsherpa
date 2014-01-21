@@ -1,9 +1,8 @@
-<%var assigned = todo.assigned_user()%>
 <%var due = todo.escape('deadline')%>
 <button class="btn btn-xs" name="todo_list_item[completed]" value="true" id="check-off" data-id="<%=todo.get('id')%>">
 	<span class="glyphicon glyphicon-check"></span>
 </button>
-<span class="toggle-edit">
+<span class="toggle-edit" data-id="<%=todo.get('id')%>">
 	<span><%=(todo.get('name')) ? todo.escape('name') : 'Give the todo a name'%></span>
 	<span id="assign_user" ><%=(assigned) ? assigned.escape('name') : "Unassigned"%></span>
 	<span id="due-date"><%=(due) ? due : "No deadline"%></span>

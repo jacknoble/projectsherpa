@@ -1,0 +1,26 @@
+<span id="list_edit_form" data-id="<%=list.escape('id')%>">
+	<form class="form-inline">
+		<input
+			class="input-sm subtle-form-input"
+			id="todo_list_title"
+			type="text"
+			name="todo_list[title]"
+			value= "<%=list.escape('title')%>"
+			data-id="<%=list.escape('id')%>"
+		>
+		<button
+			class="btn btn-xs"
+			id="update_list"
+			data-id="<%=list.escape('id')%>">OK
+		</button>
+
+		<button
+			class="btn btn-xs"
+			id="cancel_list_edit"
+			data-id="<%=list.escape('id')%>">X
+		</button>
+		<button id="delete" data-id="<%=list.id%>">
+			<span class="glyphicon glyphicon-trash"></span>
+		</button>
+	</form>
+</span>

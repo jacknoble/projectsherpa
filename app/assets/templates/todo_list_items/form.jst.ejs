@@ -1,8 +1,13 @@
-<%var assigned = todo.assigned_user%>
+
 <%var due = todo.get('deadline')%>
 
-
-<form class="form-inline" role="form">
+<form
+	class="form-inline toggle-show"
+	role="form"
+	<%if (todo.id) {%>
+		data-id="<%=todo.id%>"
+	<%}%>
+>
 	<%if (todo.id) { %>
 		<button id="delete" data-id="<%=todo.id%>">
 			<span class="glyphicon glyphicon-trash"></span>
@@ -30,7 +35,7 @@
 		<%members.forEach(function(member){ %>
 			<option
 				value="<%=member.escape('id')%>"
-				<%var assigned = todo.get('assigned_user')%>
+				<%var assigned = todo.assignedUser()%>
 				<%=(assigned && assigned.id === member.id) ? "selected" : ''%>
 		>
 				<%=member.escape('name')%>

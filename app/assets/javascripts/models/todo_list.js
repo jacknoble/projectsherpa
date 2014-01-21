@@ -1,15 +1,18 @@
 Sherpa.Models.TodoList = Backbone.Model.extend({
+	initialize: function() {
+		Sherpa.Collections.lists.add(this);
+	},
 	sync: function(method, model, options) {
 		options = options || {};
 		options.url = model.methodToURL(method.toLowerCase());
-		return Backbone.sync.apply(this, arguments)
+		return Backbone.sync.apply(this, arguments);
 	},
 
 	methodToURL: function(method) {
 		if (method === 'create') {
-			return "/api/projects/" + Sherpa.currentProject.id + "/todo_lists"
+			return "/api/projects/" + Sherpa.currentProject.id + "/todo_lists";
 		} else {
-			return "/api/todo_lists/" + this.get('id')
+			return "/api/todo_lists/" + this.get('id');
 		}
 	},
 
@@ -17,8 +20,8 @@ Sherpa.Models.TodoList = Backbone.Model.extend({
 		var items = new Sherpa.Collections.TodoListItems(
 			data.todo_list_items, {parse: true}
 		)
-		data.todo_list_items = items
-		return data
+		data.todo_list_items = items;
+		return data;
 	}
 
 })

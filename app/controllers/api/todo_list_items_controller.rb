@@ -22,6 +22,6 @@ class Api::TodoListItemsController < ApplicationController
   def destroy
     @todo_list_item = TodoListItem.find(params[:id])
     @todo_list_item.destroy
-    head :ok
+    render :json => {}
   end
 end

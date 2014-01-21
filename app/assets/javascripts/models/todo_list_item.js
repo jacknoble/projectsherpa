@@ -1,4 +1,8 @@
 Sherpa.Models.TodoListItem = Backbone.Model.extend({
+
+	initialize: function() {
+		Sherpa.Collections.todos.add(this)
+	},
 	sync: function(method, model, options) {
 		options = options || {};
 		options.url = model.methodToURL(method.toLowerCase());
@@ -6,20 +10,15 @@ Sherpa.Models.TodoListItem = Backbone.Model.extend({
 	},
 
 	assignedUser: function () {
-		return ;
-	},
-
-	assigned_user: function () {
-		if(!this._assigned_user) {
+		if(!this._assignedUser) {
 			var id = this.get('assigned_user_id')
 			if (id) {
-				this._assigned_user = Sherpa.Collections.users.grab(id)
+				this._assignedUser = Sherpa.Collections.users.get(id)
 			} else {
-				this._assigned_user = null
+				this._assignedUser = null
 			}
 		}
-
-		return this._assigned_user
+		return this._assignedUser
 	},
 
 	methodToURL: function(method) {

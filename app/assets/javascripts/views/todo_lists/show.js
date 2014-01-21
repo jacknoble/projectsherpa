@@ -1,16 +1,25 @@
 Sherpa.Views.ShowTodoList = Backbone.View.extend({
 	initialize: function() {
 		this.listenTo(
-			this.model.get('todo_list_items'), "add reset change:name remove", this.render
-		)
+			this.model.get('todo_list_items'), "add reset change remove", this.render
+		);
+
+		this.listenTo(this.model, "sync", this.render)
 	},
 	events: {
 		"click #add_todo":"newTodo",
 		"click .toggle-edit":"toggleEdit",
-		"click #cancel":"toggleShow"
+		"click #cancel":"toggleShow",
+		"click #todo_title":"changeTitle",
+		"blur #todo_list_title":"updateTitle",
+		"click #update_list":"updateTitle",
+		"click #cancel_list_edit": "cancelEdit",
+		"click #delete":"deleteList"
 	},
 
 	template: JST['todo_lists/show'],
+
+	editTemp: JST['todo_lists/edit'],
 
 	render : function() {
 		this.$el.html(this.template({list: this.model}))
@@ -37,8 +46,9 @@ Sherpa.Views.ShowTodoList = Backbone.View.extend({
 		var id = $(event.currentTarget).data('id');
 		var todo = this.model.get("todo_list_items").get(id);
 		var view = new Sherpa.Views.TodoForm({model: todo});
-		$(event.currentTarget).replaceWith(
-			view.render().$el.addClass("toggle-show").removeClass("toggle-edit")
+
+		$(event.currentTarget).parent().replaceWith(
+			view.render().$el
 		)
 	},
 
@@ -51,9 +61,44 @@ Sherpa.Views.ShowTodoList = Backbone.View.extend({
 			var todo = this.model.get("todo_list_items").get(id);
 			var view = new Sherpa.Views.ShowTodo({model: todo});
 			$(event.currentTarget).parent().replaceWith(
-				view.render().$el.addClass("toggle-edit").removeClass("toggle-show")
+				view.render().$el
 			);
 		}
+	},
+
+	changeTitle: function (event){
+		event.preventDefault();
+		var id = $(event.currentTarget).data('id');
+		var list = Sherpa.Collections.lists.get(id);
+		var titleForm = $(this.editTemp({list: list}));
+		$(event.currentTarget).replaceWith(titleForm)
+	},
+
+	updateTitle: function(event) {
+		event.preventDefault();
+		var data = $(event.currentTarget).serializeJSON()
+		var id = $(event.currentTarget).data('id')
+		var list = Sherpa.Collections.lists.get(id);
+		list.save(data.todo_list, {
+			success: function(){
+
+			}
+		})
+	},
+
+	cancelEdit: function(event) {
+		event.preventDefault();
+		this.render();
+	},
+
+	deleteList: function(event) {
+		event.preventDefault();
+		var id = $(event.currentTarget).data('id')
+		var list = Sherpa.Collections.lists.get(id)
+		list.destroy({
+			success: function () {
+			}
+		})
 	}
 
 })

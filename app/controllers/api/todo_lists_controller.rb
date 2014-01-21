@@ -17,8 +17,17 @@ class Api::TodoListsController < ApplicationController
   end
 
   def update
+    @todo_list = TodoList.find(params[:id])
+    if @todo_list.update_attributes(params[:todo_list])
+      render :json => @todo_list
+    else
+      render :status => 422
+    end
   end
 
   def destroy
+    @todo_list = TodoList.find(params[:id])
+    @todo_list.destroy
+    render :json=> {}
   end
 end

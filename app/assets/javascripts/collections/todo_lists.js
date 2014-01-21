@@ -4,3 +4,5 @@ Sherpa.Collections.TodoLists = Backbone.Collection.extend({
 		return "/api/projects/" + Sherpa.currentProject + "todo_lists"
 	}
 })
+
+Sherpa.Collections.lists = new Sherpa.Collections.TodoLists()
