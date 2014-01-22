@@ -11,6 +11,17 @@ class Api::CommentsController < ApplicationController
     end
   end
 
+  def index
+    @commentable = find_commentable(params)
+    @comments = @commentable.comments
+    if @comments
+      render 'api/comments/index'
+    else
+      render :json => @comment.errors.full_messages,
+      :status => 422
+    end
+  end
+
   def show
     @comment = Comment.find(params[:id])
     if @comment

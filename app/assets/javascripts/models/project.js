@@ -1,4 +1,7 @@
 Sherpa.Models.Project = Backbone.Model.extend({
+	initialize: function() {
+		Sherpa.Collections.projects.add(this)
+	},
 	urlRoot: "/api/projects",
 
 	parse: function(data) {
@@ -16,3 +19,4 @@ Sherpa.Models.Project = Backbone.Model.extend({
 		return data;
 	}
 })
+

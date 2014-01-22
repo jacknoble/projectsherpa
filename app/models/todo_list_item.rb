@@ -12,4 +12,5 @@ class TodoListItem < ActiveRecord::Base
 
   belongs_to :todo_list
   has_one :project, :through => :todo_list
+  has_many :comments, :as => :commentable
 end

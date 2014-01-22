@@ -33,9 +33,9 @@ Sherpa.Views.ShowProject = Backbone.View.extend({
 		setTimeout(function() {
 			this.$el.find('a#todo-lists').tab('show')
 		}.bind(this), 0)
-
+		var path = "/projects/" + this.model.id +"/todos"
 		this.$el.find('#todos').html(todoListsIndex.render().$el)
-		Backbone.history.navigate("/projects/1/todos", {silent: true})
+		Backbone.history.navigate(path, {silent: true})
 	},
 
 	discussions: function(event) {
@@ -48,7 +48,8 @@ Sherpa.Views.ShowProject = Backbone.View.extend({
 		setTimeout(function() {
 			this.$el.find('a#discussion').tab('show')
 		}.bind(this), 0)
-		Backbone.history.navigate("/projects/1/discussions", {silent: true})
+		var path = "/projects/" + this.model.id +"/discussions"
+		Backbone.history.navigate(path, {silent: true})
 	},
 
 	deleteProject: function(event) {

@@ -5,3 +5,5 @@ Sherpa.Collections.Projects = Backbone.Collection.extend({
 
 	model: Sherpa.Models.Project
 })
+
+Sherpa.Collections.projects = new Sherpa.Collections.Projects();

@@ -19,10 +19,12 @@ Sherpa::Application.routes.draw do
       resources :todo_list_items, :only =>[:index, :create]
     end
 
-    resources :todo_list_items, :only => [:show, :update, :destroy, :index]
+    resources :todo_list_items, :only => [:show, :update, :destroy, :index] do
+      resources :comments, :only => :index
+    end
 
     resources :events, :only => [:index, :show]
-    resources :comments, :only => [:create, :show]
+    resources :comments, :only => [:create, :show, :index]
   end
 
 

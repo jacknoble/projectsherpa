@@ -18,24 +18,6 @@ window.Sherpa = {
 }
 
 $(function(){
-	// Backbone.Collection.prototype.grab = function(id, callback) {
-//
-//     var collection = this;
-// 		if (this.get(id)) {
-//       var model = this.get(id).fetch({
-// 				success: function() {
-//
-// 				}
-// 			});
-//       return model;
-//     } else {
-//     	model = new this.model({ id: id });
-//       model.fetch({
-//         success: function () { collection.add(model) }
-//       });
-//       return model;
-//      }
-// 	}
 
 	Sherpa.initialize();
 });

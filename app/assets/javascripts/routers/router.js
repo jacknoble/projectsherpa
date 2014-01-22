@@ -9,7 +9,8 @@ Sherpa.Routers.Router = Backbone.Router.extend({
 		"projects/:id(/:tab)":"projectShow",
 		"logout":"logout",
 		"calendar":"calendar",
-		"comments/:id":"commentShow"
+		"comments/:id":"commentShow",
+		"todos/:id/discussion":"todoDiscussion"
 	},
 
 	commentShow: function(id) {
@@ -19,6 +20,21 @@ Sherpa.Routers.Router = Backbone.Router.extend({
 			success: function() {
 				var showView = new Sherpa.Views.ShowComment({model: comment})
 				that._modalize(showView)
+			}
+		})
+	},
+
+	todoDiscussion: function(id){
+		var comments = new Sherpa.Collections.TodoComments({},{todoId: id})
+		var todo = Sherpa.Collections.todos.get(id)
+		var that = this
+		comments.fetch({
+			success: function(){
+				var discView = new Sherpa.Views.DiscussTodo({
+					collection: comments,
+					model: todo
+				})
+				that._modalize(discView)
 			}
 		})
 	},
@@ -59,7 +75,7 @@ Sherpa.Routers.Router = Backbone.Router.extend({
 
 	_modalize: function(view) {
 		view.render();
-		this.$rootEl.append($modal)
+		this.$rootEl.append(view.$el)
 		view.$el.modal();
 		view.$el.on('hide.bs.modal', function(e) {
 			$('body').removeClass('modal-open');
