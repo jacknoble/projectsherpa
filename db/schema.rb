@@ -16,9 +16,9 @@ ActiveRecord::Schema.define(:version => 20140122074025) do
   create_table "comments", :force => true do |t|
     t.string  "title"
     t.text    "body"
+    t.integer "user_id"
     t.integer "commentable_id"
     t.string  "commentable_type"
-    t.integer "user_id"
   end
 
   create_table "companies", :force => true do |t|

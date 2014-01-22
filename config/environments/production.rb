@@ -69,9 +69,9 @@ Sherpa::Application.configure do
     :storage => :s3,
     :s3_credentials => {
       :bucket => "sherpa-production",
-      :access_key_id => ENV[S3_KEY_ID],
-      :secret_access_key => ENV[S3_SECRET_KEY],
-      :s3_host_name => 's3-us-west-1.amazoneaws.com'
+      :access_key_id => ENV['S3_KEY_ID'],
+      :secret_access_key => ENV['S3_SECRET_KEY'],
+      :s3_host_name => 's3-us-west-1.amazonaws.com'
     }
   }
 
