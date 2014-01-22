@@ -1,4 +1,7 @@
 Sherpa.Views.ShowComment = Backbone.View.extend({
+	initialize: function() {
+		this.listenTo(this.model.get('comments'), 'add remove reset', this.render)
+	},
 	template: JST['comments/show'],
 	sub_template: JST['comments/sub'],
 	events: {
@@ -6,17 +9,10 @@ Sherpa.Views.ShowComment = Backbone.View.extend({
 		"click #reply":"reply"
 	},
 	render: function(){
-		if (this.model.get('commentable') === "Comment") {
-			this.$el.html(this.sub_template({comment: this.model}))
-		} else {
-			this.$el.html(this.template({comment: this.model}));
-			this.$('.modal-body').append;
-		}
+		this.$el.html(this.template({comment: this.model}))
 		var that = this
 		this.model.get('comments').each(function(comment) {
-			var sub = new Sherpa.Views.ShowComment({model: comment})
-			var subDiv = "#subs_" + that.model.id
-			that.$(subDiv).append(sub.render().$el)
+			that.$('#subs').append(that.sub_template({comment: comment}))
 		})
 		return this;
 	},
@@ -31,8 +27,4 @@ Sherpa.Views.ShowComment = Backbone.View.extend({
 		$(event.currentTarget).remove();
 		this.$el.find('.modal-body').append(replyView.render().$el)
 	},
-
-	clearPath: function(event) {
-
-	}
 })
