@@ -15,5 +15,5 @@
  */
 
 .input-mysize { width: 360px }
-@import "layout";
+@import "layout.css";
 @import "bootstrap";
