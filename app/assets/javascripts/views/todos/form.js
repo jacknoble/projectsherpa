@@ -30,7 +30,6 @@ Sherpa.Views.TodoForm = Backbone.View.extend({
 		var existingTodo = this.collection.get(id)
 		var todo = (existingTodo || new Sherpa.Models.TodoListItem())
 		var collection = this.collection;
-		//bug, this doesn't immediately update todo
 		todo.save(data.todo_list_item, {
 			success: function(data) {
 				collection.add(todo, {merge: true});

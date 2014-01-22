@@ -18,7 +18,6 @@ Sherpa.Views.DiscussTodo = Backbone.View.extend({
 		this.$el.html(modal)
 		var that = this
 		this.collection.each(function(comment) {
-			debugger
 			that.$('#comments').append(that.sub_template({comment: comment}))
 			// that.$('#todo_form').html(todoView.$el)
 		})
@@ -27,7 +26,6 @@ Sherpa.Views.DiscussTodo = Backbone.View.extend({
 
 	reply: function(event){
 		event.preventDefault();
-		debugger
 		var replyView = new Sherpa.Views.NewComment({
 			parentOb: "todo_list_item",
 			parentOb_id: this.model.id,
