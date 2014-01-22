@@ -28,6 +28,7 @@ class User < ActiveRecord::Base
     :foreign_key => :assigned_user_id
   )
   belongs_to :company
+  has_many :comments
 
   def self.generate_session_token
     SecureRandom.urlsafe_base64(16)

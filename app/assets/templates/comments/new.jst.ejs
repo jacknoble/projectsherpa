@@ -1,0 +1,26 @@
+<form>
+	<input
+		class="input-lg subtle-form-input"
+		placeholder="Title your message"
+		name="comment[title]"
+		id="comment_title"
+	>
+	<br>
+	<textarea
+		rows="4"
+		cols="50"
+		placeholder="Write your comment here"
+		name="comment[body]"
+		id="comment_title"
+	></textarea>
+	<input
+		type="hidden"
+		name="<%='comment[' + parentOb + '_id]'%>"
+		value="<%=parentOb_id%>">
+
+	<input
+		name="submit_comment"
+		type="submit"
+		value="Add Comment"
+	>
+</form>

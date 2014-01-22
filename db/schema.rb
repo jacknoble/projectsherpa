@@ -11,29 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140121070638) do
+ActiveRecord::Schema.define(:version => 20140121204053) do
 
   create_table "comments", :force => true do |t|
-    t.string   "title",             :null => false
-    t.text     "body"
-    t.integer  "todo_list_item_id"
-    t.integer  "parent_id"
-    t.integer  "user_id",           :null => false
-    t.integer  "todo_list_id"
-    t.integer  "project_id"
-    t.integer  "file_id"
-    t.integer  "event_id"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
+    t.string  "title"
+    t.text    "body"
+    t.integer "commentable_id"
+    t.string  "commentable_type"
+    t.integer "user_id"
   end
-
-  add_index "comments", ["event_id"], :name => "index_comments_on_event_id", :unique => true
-  add_index "comments", ["file_id"], :name => "index_comments_on_file_id", :unique => true
-  add_index "comments", ["parent_id"], :name => "index_comments_on_parent_id", :unique => true
-  add_index "comments", ["project_id"], :name => "index_comments_on_project_id", :unique => true
-  add_index "comments", ["todo_list_id"], :name => "index_comments_on_todo_list_id", :unique => true
-  add_index "comments", ["todo_list_item_id"], :name => "index_comments_on_todo_list_item_id", :unique => true
-  add_index "comments", ["user_id"], :name => "index_comments_on_user_id", :unique => true
 
   create_table "companies", :force => true do |t|
     t.string   "name"

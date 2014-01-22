@@ -1,0 +1,11 @@
+<button
+	class="btn btn-large"
+	style=""
+	id="new_message">
+		Add Message
+	</button>
+<ul>
+	<%comments.each(function(comment) { %>
+		<div class="well"><a href="<%='#comments/' + comment.escape('id')%>"><%=comment.escape('title')%></a></div>
+	<%})%>
+<ul>

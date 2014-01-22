@@ -14,12 +14,12 @@ class CreateComments < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index :comments, :todo_list_item_id, :unique => true
-    add_index :comments, :parent_id, :unique => true
-    add_index :comments, :user_id, :unique => true
-    add_index :comments, :todo_list_id, :unique => true
-    add_index :comments, :project_id, :unique => true
-    add_index :comments, :file_id, :unique => true
-    add_index :comments, :event_id, :unique => true
+    add_index :comments, :todo_list_item_id
+    add_index :comments, :parent_id
+    add_index :comments, :user_id
+    add_index :comments, :todo_list_id
+    add_index :comments, :project_id
+    add_index :comments, :file_id
+    add_index :comments, :event_id
   end
 end

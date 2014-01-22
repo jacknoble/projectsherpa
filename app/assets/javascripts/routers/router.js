@@ -6,9 +6,21 @@ Sherpa.Routers.Router = Backbone.Router.extend({
 
 	routes: {
 		'':'userShow',
-		"projects/:id":"projectShow",
+		"projects/:id(/:tab)":"projectShow",
 		"logout":"logout",
-		"calendar":"calendar"
+		"calendar":"calendar",
+		"comments/:id":"commentShow"
+	},
+
+	commentShow: function(id) {
+		var comment = new Sherpa.Models.Comment({id: id})
+		var that = this
+		comment.fetch({
+			success: function() {
+				var showView = new Sherpa.Views.ShowComment({model: comment})
+				that._modalize(showView)
+			}
+		})
 	},
 
 	userShow: function() {
@@ -17,13 +29,13 @@ Sherpa.Routers.Router = Backbone.Router.extend({
 		this._swapView(userView)
 	},
 
-	projectShow: function(id) {
+	projectShow: function(id, tab) {
 		var projects = Sherpa.user.get("projects")
 		var project = Sherpa.currentProject = projects.get(id)
 		var that = this
 		project.fetch({
 			success: function(){
-				var projectView = new Sherpa.Views.ShowProject({model: project})
+				var projectView = new Sherpa.Views.ShowProject({model: project, tab: tab})
 				that._swapView(projectView);
 			}
 		})
@@ -43,6 +55,17 @@ Sherpa.Routers.Router = Backbone.Router.extend({
 	_swapView: function(view) {
 		this.$rootEl.empty();
 		this.$rootEl.html(view.render().$el)
+	},
+
+	_modalize: function(view) {
+		$modal = $('<div>').html(view.render().$el)
+		this.$rootEl.append($modal)
+		$('#myModal').modal();
+		$('#myModal').on('hide.bs.modal', function(e) {
+			$('body').removeClass('modal-open');
+			$('.modal-backdrop').remove();
+			window.history.back()
+		})
 	}
 
 })

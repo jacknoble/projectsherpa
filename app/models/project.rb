@@ -13,6 +13,7 @@ class Project < ActiveRecord::Base
   has_many :team_memberships
   has_many :team_members, :through => :team_memberships, :source => :user
   has_many :todo_lists
+  has_many :comments, as: :commentable
 
   after_save :add_creator_as_member
 

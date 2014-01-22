@@ -1,4 +1,6 @@
 Sherpa::Application.routes.draw do
+  get "comments/create"
+
   root to: "root#root"
 
   resources :users, :only => [:new, :create]
@@ -20,6 +22,7 @@ Sherpa::Application.routes.draw do
     resources :todo_list_items, :only => [:show, :update, :destroy, :index]
 
     resources :events, :only => [:index, :show]
+    resources :comments, :only => [:create, :show]
   end
 
 

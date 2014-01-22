@@ -16,3 +16,5 @@ json.todo_lists do
     end
   end
 end
+
+json.comments(project.comments, :id, :title)

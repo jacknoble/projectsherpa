@@ -10,6 +10,9 @@ Sherpa.Models.Project = Backbone.Model.extend({
 			data.todo_lists, {parse: true}
 		)
 		data.todo_lists = parsedTodoLists;
+
+		var comments = new Sherpa.Collections.Comments(data.comments, {parse: true})
+		data.comments = comments
 		return data;
 	}
 })
