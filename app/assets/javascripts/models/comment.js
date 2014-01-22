@@ -4,6 +4,9 @@ Sherpa.Models.Comment = Backbone.Model.extend({
 	parse: function(data) {
 		var comments = new Sherpa.Collections.Comments(data.comments, {parse: true})
 		data.comments = comments
+
+		var user = Sherpa.Collections.users.get(data.user_id)
+		data.user = user
 		return data
 	}
 

@@ -1,7 +1,5 @@
 <div class="well">
 	<h5><%=comment.escape('title')%></h5>
-	<p><%=comment.escape('body')%>
-	<div id="<%='subs' + comment.escape('id')%>"
-	>
-	</div>
+	<p><%=comment.escape('body')%></p>
+	<p><%='--' + comment.get('user').escape('name')%></p>
 </div>

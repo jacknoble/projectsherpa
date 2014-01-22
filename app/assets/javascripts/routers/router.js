@@ -58,10 +58,10 @@ Sherpa.Routers.Router = Backbone.Router.extend({
 	},
 
 	_modalize: function(view) {
-		$modal = $('<div>').html(view.render().$el)
+		view.render();
 		this.$rootEl.append($modal)
-		$('#myModal').modal();
-		$('#myModal').on('hide.bs.modal', function(e) {
+		view.$el.modal();
+		view.$el.on('hide.bs.modal', function(e) {
 			$('body').removeClass('modal-open');
 			$('.modal-backdrop').remove();
 			window.history.back()

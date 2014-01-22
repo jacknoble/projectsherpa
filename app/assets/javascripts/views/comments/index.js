@@ -7,6 +7,7 @@ Sherpa.Views.CommentIndex = Backbone.View.extend({
 		"click #new_message":"newMessage"
 	},
 	render: function() {
+		debugger
 		this.$el.html(this.template({comments: this.collection}))
 		return this;
 	},

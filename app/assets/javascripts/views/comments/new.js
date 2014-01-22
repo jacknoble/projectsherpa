@@ -17,8 +17,8 @@ Sherpa.Views.NewComment = Backbone.View.extend({
 	submitComment: function(event) {
 		event.preventDefault();
 		var commentData = $(event.target).serializeJSON();
-		var comment = new Sherpa.Models.Comment(commentData.comment)
-		var that = this
+		var comment = new Sherpa.Models.Comment(commentData.comment);
+		var that = this;
 		comment.save({},{
 			success: function() {
 				that.collection.add(comment)
@@ -26,6 +26,6 @@ Sherpa.Views.NewComment = Backbone.View.extend({
 			error: function() {
 				console.log(arguments)
 			}
-		})
+		});
 	}
 })
