@@ -8,6 +8,9 @@ gem 'bcrypt-ruby', '~> 3.0.0', :require => 'bcrypt'
 gem 'jbuilder'
 gem 'ejs'
 gem 'jquery-ui-rails'
+gem 'figaro'
+gem 'paperclip'
+gem "aws-sdk"
 
 
 group :development, :test do
