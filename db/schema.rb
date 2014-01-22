@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140121204053) do
+ActiveRecord::Schema.define(:version => 20140122074025) do
 
   create_table "comments", :force => true do |t|
     t.string  "title"
@@ -68,16 +68,20 @@ ActiveRecord::Schema.define(:version => 20140121204053) do
   add_index "todo_lists", ["project_id"], :name => "index_todo_lists_on_project_id"
 
   create_table "users", :force => true do |t|
-    t.string   "lname",           :null => false
-    t.string   "fname",           :null => false
-    t.string   "email",           :null => false
-    t.string   "password_digest", :null => false
-    t.string   "session_token",   :null => false
+    t.string   "lname",              :null => false
+    t.string   "fname",              :null => false
+    t.string   "email",              :null => false
+    t.string   "password_digest",    :null => false
+    t.string   "session_token",      :null => false
     t.string   "photo"
-    t.datetime "created_at",      :null => false
-    t.datetime "updated_at",      :null => false
+    t.datetime "created_at",         :null => false
+    t.datetime "updated_at",         :null => false
     t.integer  "company_id"
-    t.string   "name",            :null => false
+    t.string   "name",               :null => false
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

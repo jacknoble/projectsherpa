@@ -1,4 +1,4 @@
-json.(@user, :id, :name, :fname, :lname, :company)
+json.(@user, :id, :name, :fname, :lname, :company, :photo)
 json.projects do
 	json.array!(@projects) do |project|
 		json.partial!('api/projects/project', project: project)

@@ -29,10 +29,14 @@ class User < ActiveRecord::Base
   )
   belongs_to :company
   has_many :comments
+
   has_attached_file :photo, :styles => {
     :big => "600x600>",
     :small => "50x50#"
   }
+  #
+  # validates_attachment :photo,
+  #   :content_type => { :content_type => ["image/jpg", "image/gif", "image/png"] }
 
   def self.generate_session_token
     SecureRandom.urlsafe_base64(16)

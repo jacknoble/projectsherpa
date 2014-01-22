@@ -10,8 +10,8 @@ gem 'ejs'
 gem 'jquery-ui-rails'
 gem 'figaro'
 gem 'paperclip'
-gem "aws-sdk"
-
+gem 'aws-sdk'
+gem 'dropzonejs-rails'
 
 group :development, :test do
   gem 'rspec-rails'

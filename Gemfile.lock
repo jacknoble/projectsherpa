@@ -56,6 +56,8 @@ GEM
     debugger-linecache (1.2.0)
     debugger-ruby_core_source (1.2.4)
     diff-lcs (1.2.5)
+    dropzonejs-rails (0.4.12)
+      rails (> 3.1)
     eco (1.0.0)
       coffee-script
       eco-source
@@ -161,6 +163,7 @@ DEPENDENCIES
   backbone-on-rails
   bcrypt-ruby (~> 3.0.0)
   debugger
+  dropzonejs-rails
   ejs
   figaro
   jbuilder

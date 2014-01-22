@@ -39,10 +39,12 @@ Sherpa::Application.configure do
   config.paperclip_defaults = {
     :storage => :s3,
     :s3_credentials => {
-      :bucket => "sherpa-developmen",
+      :bucket => "sherpa-development",
       :access_key_id => ENV['S3_KEY_ID'],
       :secret_access_key => ENV['S3_SECRET_KEY'],
-      :s3_host_name => 's3-us-west-1.amazoneaws.com'
+      :s3_host_name => 's3-us-west-1.amazonaws.com'
     }
   }
+
+  Paperclip.options[:comment_path] = "/opt/local/bin/convert"
 end

@@ -48,6 +48,9 @@ Sherpa.Routers.Router = Backbone.Router.extend({
 	projectShow: function(id, tab) {
 		var projects = Sherpa.user.get("projects")
 		var project = Sherpa.currentProject = projects.get(id)
+		if (!project){
+			project = Sherpa.Models.Project({id: id})
+		}
 		var that = this
 		project.fetch({
 			success: function(){

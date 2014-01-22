@@ -17,7 +17,8 @@
 //= require jquery.serializeJSON
 //= require jquery.ui.all
 //= require bootstrap
-//= require fullcalendar.js
+//= require fullcalendar
+//= require dropzone
 //= require sherpa
 //= require_tree ../templates
 //= require_tree ./models
