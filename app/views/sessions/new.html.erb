@@ -1,27 +1,57 @@
-<h1>Login</h1>
+<body class=sherpa-landing>
+	<div class="container">
+		<div class="jumbotron" style="-moz-border-radius: 15px;border-radius: 15px;"
+		>
+			<h1 class="sherpa-brand" style="color: white;">welcome to Projectsherpa</h1>
+			<%= link_to(
+				"New to Sherpa?",
+				 new_user_url,
+				 :style=> "color: white;"
+				) %>
+			<br>
+			<br>
+			<form action="<%=session_url%>" method="post">
+				<input
+					type="hidden"
+					name="authenticity_token"
+					value="<%= form_authenticity_token%>">
+				<label style="color: white;" for="user_email">Email:</label>
+				<input
+					type="text"
+					name="user[email]"
+					id="user_email"
+				>
+				<br>
 
-<%= link_to("New to Sherpa?", new_user_url) %>
-<br>
-<br>
-<form action="<%=session_url%>" method="post">
-	<input
-		type="hidden"
-		name="authenticity_token"
-		value="<%= form_authenticity_token%>">
-	<label for="user_email">Email:</label>
-	<input
-		type="text"
-		name="user[email]"
-		id="user_email"
-	>
-	<br>
+				<label style="color: white;" for="user_password">Password:</label>
+				<input
+					type="password"
+					name="user[password]"
+					id="user_password"
+				>
 
-	<label for="user_password">Password:</label>
-	<input
-		type="password"
-		name="user[password]"
-		id="user_password"
-	>
+				<input type="submit" value="Login" class="btn btn-sherpa">
+			</form>
+		  <p align="right">
+				<%=render partial: "demo"%>
+			</p>
+		</div>
+	</div>
+</body>
 
-	<input type="submit" value="Login">
-</form>
+<script>
+$(function(){
+	$('.jumbotron').blurjs({
+		source: 'body',			//Background to blur
+		radius: 5,			//Blur Radius
+		overlay: '',			//Overlay Color, follow CSS3's rgba() syntax
+		offset: {			//Pixel offset of background-position
+			x: 0,
+			y: 0
+		},
+		optClass: '',			//Class to add to all affected elements
+		cache: false,			//If set to true, blurred image will be cached and used in the future. If image is in cache already, it will be used.
+		cacheKeyPrefix: 'blurjs-',	//Prefix to the keyname in the localStorage object
+	});
+})
+</script>

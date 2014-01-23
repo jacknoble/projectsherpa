@@ -52,14 +52,27 @@
 <%end%>
 
 <!-- body -->
-<body style="background-image:url('assets/bedge_grunge.png');">
+<%if logged_in?%>
+	<body
+		style="background-image:url('assets/bedge_grunge.png');"
+	>
 
 	<!-- container -->
-<div class="sherpaBasic container" style="width: 80%; height: auto; min-height: 500px" >
-	<%= yield %>
-</div>
-
-
-
+	<div class="sherpaBasic container" style="width: 80%; height: auto; min-height: 500px" >
+		<%= yield %>
+	</div>
 </body>
+<%else%>
+
+	<%=yield%>
+
+<%end%>
 </html>
+
+<script>
+	<%if logged_in?%>
+		var CURRENT_USER = <%=current_user.id%>;
+	<% else %>
+		var CURRENT_USER = null
+	<% end %>
+</script>

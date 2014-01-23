@@ -18,6 +18,7 @@
 //= require jquery.ui.draggable
 //= require jquery.ui.droppable
 //= require moment-with-langs
+//= require blur
 //= require bootstrap
 //= require fullcalendar
 //= require dropzone

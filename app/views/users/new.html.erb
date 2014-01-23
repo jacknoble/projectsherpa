@@ -1,2 +1,31 @@
-<h1>Sign Up</h1>
-<%= render partial: "form", locals: {user: @user, purpose: :new} %>
+<body class=sherpa-landing>
+	<div class="container">
+		<div class="jumbotron" style="-moz-border-radius: 15px;border-radius: 15px;"
+		>
+			<h1 class="sherpa-brand" style="color: white; margin-top: -5px">welcome to Projectsherpa</h1>
+			<br>
+			<br>
+			<%= render partial: "form", locals: {user: @user, purpose: :new} %>
+		  <p style="padding-left: 100px">
+				<%=render partial: "sessions/demo"%>
+			</p>
+		</div>
+	</div>
+</body>
+
+<script>
+$(function(){
+	$('.jumbotron').blurjs({
+		source: 'body',			//Background to blur
+		radius: 5,			//Blur Radius
+		overlay: '',			//Overlay Color, follow CSS3's rgba() syntax
+		offset: {			//Pixel offset of background-position
+			x: 0,
+			y: 0
+		},
+		optClass: '',			//Class to add to all affected elements
+		cache: false,			//If set to true, blurred image will be cached and used in the future. If image is in cache already, it will be used.
+		cacheKeyPrefix: 'blurjs-',	//Prefix to the keyname in the localStorage object
+	});
+})
+</script>

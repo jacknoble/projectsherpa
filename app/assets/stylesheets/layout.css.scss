@@ -23,7 +23,7 @@ $bubblegum: #FF85AD;
 
 
 .sherpa-margin {
-	background-image:url('assets/bedge_grunge.png');
+	background-image:url('/assets/bedge_grunge.png');
 
 }
 
@@ -54,6 +54,11 @@ a.sherp-links {
 	border-radius: 15px;
 	border-color: #27435E;
 	border-style: solid;
+}
+
+.sherpa-landing {
+	background-image: url('/assets/himalaya.jpg');
+	filter: blur(2px);
 }
 
 .sherpa-todo {

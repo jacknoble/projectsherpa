@@ -1,0 +1,20 @@
+		<form action="<%=session_url%>" method="post" align="right">
+			<input
+				type="hidden"
+				name="authenticity_token"
+				value="<%= form_authenticity_token%>">
+			<input
+				type="hidden"
+				name="user[email]"
+				id="user_email"
+				value=demo_user@projectsherpa.io
+			>
+			<input
+				type="hidden"
+				name="user[password]"
+				id="user_password"
+				value="demo_user_password"
+			>
+
+			<input type="submit" class="btn btn-sherpa btn-lg"  value="Demo User" class="btn btn-sherpa">
+		</form>

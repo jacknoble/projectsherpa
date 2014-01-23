@@ -1,4 +1,5 @@
 <form
+style="color: white;
 	action="<%= users_url %>"
 	method="<%= (purpose == :new) ? 'post' : 'put' %>"
 >
@@ -15,9 +16,8 @@
 		id="user_name"
 		value="<%= (purpose == :new) ? "" : user.fname + " " + user.lname %>"
 	>
-	<br>
 
-	<br><label for="user_company_name">Company Name:</label>
+	<label for="user_company_name" style="margin-left: 5px">Company Name:</label>
 	<input
 		type="text"
 		name="user[company_name]"
@@ -25,17 +25,15 @@
 		value="<%= user.company.name if user.company %>"
 	>
 	<br>
-
+	<br>
 	<label for="user_email">Your Email:</label>
 	<input
 		type="text"
 		name="user[email]"
 		id="user_email"
 		value="<%= user.email %>"
-	>
-	<br>
-
-	<label for="user_password">Password:</label>
+		>
+	<label for="user_password" style="margin-left: 5px">Password:</label>
 	<input
 		type="password"
 		name="user[password]"
@@ -44,6 +42,7 @@
 	<br>
 
 	<input
+	class="btn btn-sherpa"
 		type="submit"
 		value="<%= (purpose ==:new) ? "Register" : "Update Personal Info"%>"
 	>
