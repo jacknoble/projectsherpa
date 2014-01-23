@@ -1,5 +1,6 @@
-Sherpa.Views.DiscussTodo = Backbone.View.extend({
+Sherpa.Views.DocumentDiscussion = Backbone.View.extend({
 	initialize: function() {
+		this.collection = this.model.get('comments')
 		this.listenTo(this.collection, 'add remove reset', this.render)
 	},
 	attributes: {

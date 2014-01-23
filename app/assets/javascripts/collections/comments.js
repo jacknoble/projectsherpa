@@ -17,3 +17,16 @@ Sherpa.Collections.TodoComments = Backbone.Collection.extend({
 		return "api/todo_list_items/" + this.todoId + "/comments"
 	}
 });
+
+
+Sherpa.Collections.DocumentComments = Backbone.Collection.extend({
+	model: Sherpa.Models.Comment,
+
+	initialize: function (models, options) {
+		this.docId = options.docId;
+	},
+
+	url: function () {
+		return "api/documents/" + this.docId + "/comments"
+	}
+});

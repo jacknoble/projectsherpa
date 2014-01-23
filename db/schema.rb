@@ -11,14 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140122074025) do
+ActiveRecord::Schema.define(:version => 20140122183812) do
 
   create_table "comments", :force => true do |t|
     t.string  "title"
     t.text    "body"
-    t.integer "user_id"
     t.integer "commentable_id"
     t.string  "commentable_type"
+    t.integer "user_id"
   end
 
   create_table "companies", :force => true do |t|
@@ -28,6 +28,21 @@ ActiveRecord::Schema.define(:version => 20140122074025) do
   end
 
   add_index "companies", ["name"], :name => "index_companies_on_name"
+
+  create_table "documents", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "project_id"
+    t.string   "file"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+    t.string   "file_file_name"
+    t.string   "file_content_type"
+    t.integer  "file_file_size"
+    t.datetime "file_updated_at"
+  end
+
+  add_index "documents", ["project_id"], :name => "index_documents_on_project_id"
+  add_index "documents", ["user_id"], :name => "index_documents_on_user_id"
 
   create_table "projects", :force => true do |t|
     t.string   "title",       :null => false

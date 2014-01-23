@@ -1,9 +1,11 @@
 <div id="project_list">
 	<ul>
 		<%projects.forEach(function(project){ %>
-			<a href=<%= "#/projects/" + project.id%>>
-				<%= project.escape('title') %>
-			</a>
+			<div class="sherpa-square">
+				<a href=<%= "#/projects/" + project.id%>>
+					<%= project.escape('title') %>
+				</a>
+			</div>
 			<br>
 		<%});%>
 	</ul>

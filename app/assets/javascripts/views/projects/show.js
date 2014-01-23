@@ -6,9 +6,10 @@ Sherpa.Views.ShowProject = Backbone.View.extend({
 	template: JST["projects/show"],
 
 	events: {
-		"click a#todo-lists": "todos",
-		"click a#discussion": "discussions",
-		"click a#delete_project": "deleteProject"
+		"click a#todo-lists-tab": "todos",
+		"click a#discussions-tab": "discussions",
+		"click a#delete_project": "deleteProject",
+		"click a#documents-tab":"documents"
 	},
 
 	render: function() {
@@ -49,6 +50,20 @@ Sherpa.Views.ShowProject = Backbone.View.extend({
 			this.$el.find('a#discussion').tab('show')
 		}.bind(this), 0)
 		var path = "/projects/" + this.model.id +"/discussions"
+		Backbone.history.navigate(path, {silent: true})
+	},
+
+	documents: function(event) {
+		event && event.preventDefault();
+		var docIndex = new Sherpa.Views.DocumentIndex({
+			model: this.model,
+			collection: this.model.get('documents')
+		})
+		this.$el.find('#documents').html(docIndex.render().$el)
+		setTimeout(function() {
+			this.$el.find('a#documents-tab').tab('show')
+		}.bind(this), 0)
+		var path = "/projects/" + this.model.id +"/documents"
 		Backbone.history.navigate(path, {silent: true})
 	},
 

@@ -16,6 +16,11 @@ Sherpa.Models.Project = Backbone.Model.extend({
 
 		var comments = new Sherpa.Collections.Comments(data.comments, {parse: true})
 		data.comments = comments
+		var documents = new Sherpa.Collections.Documents(
+			data.documents, {projectId: data.id}
+		)
+
+		data.documents = documents
 		return data;
 	}
 })

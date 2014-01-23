@@ -29,6 +29,7 @@ class User < ActiveRecord::Base
   )
   belongs_to :company
   has_many :comments
+  has_many :documents
 
   has_attached_file :photo, :styles => {
     :big => "600x600>",

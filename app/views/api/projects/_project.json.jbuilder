@@ -1,4 +1,5 @@
-project = (@project) ? @project : project
+project = project || @project
+
 json.(project, :id, :title, :description)
 json.team_members do
 	json.array!(project.team_members) do |team_member|
@@ -18,3 +19,9 @@ json.todo_lists do
 end
 
 json.comments(project.comments, :id, :title, :user_id)
+
+json.documents do
+  json.array!(project.documents) do |doc|
+    json.partial!('api/documents/show', document: doc)
+  end
+end

@@ -10,48 +10,61 @@ Sherpa.Routers.Router = Backbone.Router.extend({
 		"logout":"logout",
 		"calendar":"calendar",
 		"comments/:id":"commentShow",
-		"todos/:id/discussion":"todoDiscussion"
+		"todos/:id/discussion":"todoDiscussion",
+		"documents/:id/discussion":"docDiscussion"
 	},
 
-	commentShow: function(id) {
-		var comment = new Sherpa.Models.Comment({id: id})
-		var that = this
-		comment.fetch({
+	docDiscussion: function(id) {
+		var doc = new Sherpa.Models.Document({id: id});
+		var that = this;
+		doc.fetch({
 			success: function() {
-				var showView = new Sherpa.Views.ShowComment({model: comment})
-				that._modalize(showView)
+				var discView = new Sherpa.Views.DocumentDiscussion({model: doc})
+				that._modalize(discView)
 			}
 		})
 	},
 
+	commentShow: function(id) {
+		var comment = new Sherpa.Models.Comment({id: id});
+		var that = this;
+		comment.fetch({
+			success: function() {
+				var showView = new Sherpa.Views.ShowComment({model: comment});
+				that._modalize(showView);
+			}
+		})
+	},
+
+
 	todoDiscussion: function(id){
-		var comments = new Sherpa.Collections.TodoComments({},{todoId: id})
-		var todo = Sherpa.Collections.todos.get(id)
-		var that = this
+		var comments = new Sherpa.Collections.TodoComments({},{todoId: id});
+		var todo = Sherpa.Collections.todos.get(id);
+		var that = this;
 		comments.fetch({
 			success: function(){
 				var discView = new Sherpa.Views.DiscussTodo({
 					collection: comments,
 					model: todo
 				})
-				that._modalize(discView)
+				that._modalize(discView);
 			}
 		})
 	},
 
 	userShow: function() {
-		var user = Sherpa.user
-		var userView = new Sherpa.Views.UserShow({model: user})
-		this._swapView(userView)
+		var user = Sherpa.user;
+		var userView = new Sherpa.Views.UserShow({model: user});
+		this._swapView(userView);
 	},
 
 	projectShow: function(id, tab) {
-		var projects = Sherpa.user.get("projects")
-		var project = Sherpa.currentProject = projects.get(id)
+		var projects = Sherpa.user.get("projects");
+		var project = Sherpa.currentProject = projects.get(id);
 		if (!project){
-			project = Sherpa.Models.Project({id: id})
+			project = new Sherpa.Models.Project({id: id})
 		}
-		var that = this
+		var that = this;
 		project.fetch({
 			success: function(){
 				var projectView = new Sherpa.Views.ShowProject({model: project, tab: tab})

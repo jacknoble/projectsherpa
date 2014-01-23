@@ -15,7 +15,8 @@
 //= require underscore
 //= require backbone
 //= require jquery.serializeJSON
-//= require jquery.ui.all
+//= require jquery.ui.draggable
+//= require jquery.ui.droppable
 //= require bootstrap
 //= require fullcalendar
 //= require dropzone

@@ -2,7 +2,7 @@ Sherpa.Views.UserShow = Backbone.View.extend({
 	initialize: function() {
 		this.collection = this.model.get('projects');
 		this.listenTo(this.collection, "add remove change:title reset", this.render);
-		this.listenTo(this.model, 'change:photo_url', this.render)
+		this.listenTo(this.model, 'change:photo', this.render)
 		this._leftBumper = "index"
 	},
 	template: JST["users/show"],
@@ -11,6 +11,7 @@ Sherpa.Views.UserShow = Backbone.View.extend({
 		"click button#new_project":"toggleLeftBumper",
 		"click button#cancel_project":"toggleLeftBumper"
 	},
+
 	render: function() {
 		var that = this
 		this.$el.html(this.template({user: this.model}))
@@ -30,7 +31,6 @@ Sherpa.Views.UserShow = Backbone.View.extend({
 
 			success: function(file, resp) {
 				that.model.set({photo: resp.photo_url})
-				debugger
 			}
 		})
 		var indexView = new Sherpa.Views.ProjectIndex({

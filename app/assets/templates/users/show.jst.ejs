@@ -7,7 +7,7 @@
 		enctype="multipart/form-data"
 	>
 		<% if (user.get('photo')) {%>
-			<img style="max-width: 99%" src="<%=user.escape('photo')%>">
+			<img class='img-rounded' style="max-width: 99%" src="<%=user.escape('photo')%>">
 		<% } else { %>
 			<img style="max-width: 99%" src="/assets/empty_portrait.jpg">
 		<% } %>

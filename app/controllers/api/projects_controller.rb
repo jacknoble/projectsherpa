@@ -28,8 +28,11 @@ class Api::ProjectsController < ApplicationController
   end
 
   def show
-    @project = Project.find(params[:id])
+    @project = Project.find(params[:id],
+      :include => [:comments, :documents, :todo_lists, :team_members]
+    )
     render :partial => 'api/projects/project'
   end
 
 end
+

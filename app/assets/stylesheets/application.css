@@ -61,6 +61,7 @@
  *= require bootstrap
  *= require fullcalendar
  *= require dropzone/basic
+ *= require jquery.ui.all
  */
 
 .input-mysize { width: 360px }
