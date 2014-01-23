@@ -5,45 +5,62 @@ $leather: #813a26;
 $swimSuitRed: #d94c3a;
 $smog: #e8c571 ;
 $bubblegum: #FF85AD;
+@font-face {
+       font-family: "Dosis";
+       src:  url('dosis-bold.ttf');
+		 }
 
-a:link{
-	color: black;
+.sherpa-brand {
+	color: white;
+	font-size: 100px;
+	font-family: "Dosis";
 }
 
-a:visited {
-	color: black;
+.navbar-brand {
+	color: white;
+	font-family: "Dosis";
 }
 
-a:hover{
-
-}
-
-a.sherpaBrand {
-	color: $mustangTeal;
-	font-size: 28px;
-	font-family: "Times New Roman";
-
-}
-
-.sherpaBrand:hover {
-	color: $mustangTeal;
-	text-decoration: none;
-}
-
-.sherpaNav {
-	background-image: -webkit-linear-gradient(left, rgba(0,0,0, 1) 100%, rgba(0,0,0, 0), url('assets/leather.jpg')); /* For Safari */
-	background-image: -o-linear-gradient(right, rgba(0,0,0, 1) 100%, rgba(0,0,0, 0), url('assets/leather.jpg')); /* For Opera 11.1 to 12.0 */
-	background-image: -moz-linear-gradient(right, rgba(0,0,0, 1) 100%, rgba(0,0,0, 0), url('assets/leather.jpg')); /* For Firefox 3.6 to 15 */
-	background-image: linear-gradient(to right, rgba(0,0,0, 1) 100% , rgba(0,0,0, 0), url('assets/leather.jpg')); /* Standard syntax */
-}
 
 .sherpa-margin {
-	background-image:url('assets/bedge_grunge.png')
+	background-image:url('assets/bedge_grunge.png');
 
+}
+
+a.sherp-links {
+	color: white;
 }
 
 .sherpaBasic {
 	background: white;
+}
+
+.sherpa-off {
+	background: #27435E;
+	color: white;
+
+}
+
+.btn-sherpa {
+	color: white;
+	background: #6dc9ff;
+	font-style: bold;
+	font-family: "Dosis";
+}
+
+.sherpa-list {
+	background: #C2D1E0;
+	-moz-border-radius: 15px;
+	border-radius: 15px;
+	border-color: #27435E;
+	border-style: solid;
+}
+
+.sherpa-todo {
+	background: #B8B8E6;
+	-moz-border-radius: 15px;
+	border-radius: 15px;
+	margin-right: 5px;
 }
 
 .subtle-form-input {

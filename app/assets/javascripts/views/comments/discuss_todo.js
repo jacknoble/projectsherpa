@@ -5,7 +5,7 @@ Sherpa.Views.DiscussTodo = Backbone.View.extend({
 	attributes: {
 		class: "modal fade"
 	},
-	template: JST['comments/doc_discuss'],
+	template: JST['comments/todo_disc'],
 	sub_template: JST['comments/sub'],
 	events: {
 		"click #reply":"reply"

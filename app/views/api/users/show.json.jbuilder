@@ -5,3 +5,4 @@ json.projects do
 	end
 end
 json.company {json.partial!('api/companies/company', company: @user.company)}
+json.small_photo @user.photo(:small)

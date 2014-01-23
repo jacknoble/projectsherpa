@@ -17,6 +17,11 @@ Sherpa.Views.ShowTodoList = Backbone.View.extend({
 		"click #delete":"deleteList"
 	},
 
+	attributes: {
+		class: "sherpa-list",
+		style: "margin-left: 15px; margin-top: 10px"
+	},
+
 	template: JST['todo_lists/show'],
 
 	editTemp: JST['todo_lists/edit'],

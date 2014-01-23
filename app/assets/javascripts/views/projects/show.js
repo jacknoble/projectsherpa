@@ -30,12 +30,11 @@ Sherpa.Views.ShowProject = Backbone.View.extend({
 			collection: this.model.get('todo_lists'),
 			team_members: this.model.get('team_members')
 		});
-
+		this.$el.find('#todos').html(todoListsIndex.render().$el)
 		setTimeout(function() {
-			this.$el.find('a#todo-lists').tab('show')
+			this.$el.find('a#todo-lists-tab').tab('show')
 		}.bind(this), 0)
 		var path = "/projects/" + this.model.id +"/todos"
-		this.$el.find('#todos').html(todoListsIndex.render().$el)
 		Backbone.history.navigate(path, {silent: true})
 	},
 
@@ -47,7 +46,7 @@ Sherpa.Views.ShowProject = Backbone.View.extend({
 		})
 		this.$el.find('#discussions').html(discIndex.render().$el)
 		setTimeout(function() {
-			this.$el.find('a#discussion').tab('show')
+			this.$el.find('a#discussion-tab').tab('show')
 		}.bind(this), 0)
 		var path = "/projects/" + this.model.id +"/discussions"
 		Backbone.history.navigate(path, {silent: true})

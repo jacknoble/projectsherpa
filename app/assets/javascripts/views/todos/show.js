@@ -10,6 +10,10 @@ Sherpa.Views.ShowTodo = Backbone.View.extend({
 		return this
 	},
 
+	attributes: {
+		class: "sherpa-todo"
+	},
+
 	completeTodo: function(event) {
 		event.preventDefault();
 		var id = $(event.target).data('id')

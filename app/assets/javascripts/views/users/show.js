@@ -15,14 +15,8 @@ Sherpa.Views.UserShow = Backbone.View.extend({
 	render: function() {
 		var that = this
 		this.$el.html(this.template({user: this.model}))
-		var msg;
-		if (this.model.get('photo')) {
-			msg = "drop or click to change your photo"
-		} else {
-			msg = "No photo, drop one here ... or click"
-		}
 		this.$el.find('.dropzone').dropzone({
-			dictDefaultMessage: msg,
+			dictDefaultMessage: '',
 			paramName: "user[photo]",
 			method: "put",
 			sending: function(file, xhr, formData) {

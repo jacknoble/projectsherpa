@@ -17,6 +17,7 @@
 //= require jquery.serializeJSON
 //= require jquery.ui.draggable
 //= require jquery.ui.droppable
+//= require moment-with-langs
 //= require bootstrap
 //= require fullcalendar
 //= require dropzone

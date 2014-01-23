@@ -9,7 +9,7 @@
 	<%}%>
 >
 	<%if (todo.id) { %>
-		<button id="delete" data-id="<%=todo.id%>">
+		<button class="btn-xs btn-sherpa" id="delete" data-id="<%=todo.id%>">
 			<span class="glyphicon glyphicon-trash"></span>
 		</button>
 
@@ -57,11 +57,11 @@
 
 	<input
 		id="create-update"
-		class="btn btn-xs"
+		class="btn btn-xs btn-sherpa"
 		type="submit"
 		value="<%=(todo.id) ? 'Update Todo' : 'Add Todo'%>"
 	>
-	<button class="btn btn-xs" id="cancel" data-id="<%=todo.escape('id')%>">X</button>
+	<button class="btn btn-xs btn-sherpa" id="cancel" data-id="<%=todo.escape('id')%>">X</button>
 
 </form>
 <script>

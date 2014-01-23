@@ -17,32 +17,32 @@
 
 
 <nav
-	class="sherpaNav navbar"
+	class="sherpaNav navbar navbar-fixed"
 	role="navigation"
-	style="background-image: url('assets/black_paper.png');"
+	style="background: #6dc9ff;"
 >
 <div class="navbar-header">
 	<div class="">
-		<a class="sherpaBrand" href="#"
-			class="navbar-brand dropdown-toggle"
+		<a href="#"
+			class="sherpa-brand navbar-brand dropdown-toggle"
 			data-toggle="dropdown">
-			Sherpa
+			Projectsherpa
 		</a>
     <ul class="nav navbar-nav pull-left">
 			<%if logged_in?%>
-				<li><a href="#">Projects</a></li>
-				<li><a href="#calendar">Calendar</a></li>
-				<li><a href="#feed">Feed</a></li>
-				<li><%=link_to("Logout", session_url, :method => :delete)%></li>
+				<li><a class="sherp-links" href="#">Projects</a></li>
+				<li><a class="sherp-links" href="#calendar">Calendar</a></li>
+				<li><a class="sherp-links" href="#feed">Feed</a></li>
+				<li ><%=link_to("Logout", session_url, :method => :delete, :class=>"sherp-links")%></li>
 			<%else%>
-				<li><a href="<%= new_session_url %>">Login</a></li>
-				<li><a href="<%= new_user_url %>">Register</a></li>
+				<li><a class="sherp-links" href="<%= new_session_url %>">Login</a></li>
+				<li><a class="sherp-links" href="<%= new_user_url %>">Register</a></li>
 			<%end%>
     </ul>
 	</div>
 </div>
 		<ul class="nav navbar-nav pull-right">
-			<li><a href="#">
+			<li><a class="sherp-links" href="#">
 				<%=current_user.name%> (<%=current_user.company.name%>)
 			</a></li>
 		</ul>

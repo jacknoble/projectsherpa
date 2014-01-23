@@ -11,6 +11,10 @@ Sherpa.Views.TodoForm = Backbone.View.extend({
 		"click button#delete":"delete"
 	},
 
+	attributes: {
+		class: "sherpa-todo"
+	},
+
 	template: JST['todo_list_items/form'],
 
 	render: function(){

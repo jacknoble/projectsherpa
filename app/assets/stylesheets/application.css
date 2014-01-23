@@ -65,5 +65,7 @@
  */
 
 .input-mysize { width: 360px }
-@import "layout.css.scss";
+
 @import "bootstrap.css";
+
+
