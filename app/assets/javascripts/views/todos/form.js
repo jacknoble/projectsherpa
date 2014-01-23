@@ -8,7 +8,8 @@ Sherpa.Views.TodoForm = Backbone.View.extend({
 
 	events: {
 		"submit":"submit",
-		"click button#delete":"delete"
+		"click button#delete":"delete",
+		"blur form":"submit"
 	},
 
 	attributes: {
@@ -28,10 +29,11 @@ Sherpa.Views.TodoForm = Backbone.View.extend({
 
 	submit: function(event) {
 		event.preventDefault();
-		var data = $(event.target).serializeJSON()
+		var data = $(event.currentTarget).serializeJSON()
 		var todoData = data.todo_list_item
 		var id = todoData.id
 		var existingTodo = this.collection.get(id)
+		debugger
 		var todo = (existingTodo || new Sherpa.Models.TodoListItem())
 		var collection = this.collection;
 		todo.save(data.todo_list_item, {

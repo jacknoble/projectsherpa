@@ -6,7 +6,7 @@
 	<span>
 				<%=(todo.get('name')) ? todo.escape('name') : 'Give the todo a name'%>
 	</span>
-	<span style="font-size: 10px; padding-left 40px">
+	<span style="font-size: 10px; padding-left: 10px;">
 	<span id="assign_user" ><%=(assigned) ? 'assigned to ' + assigned.escape('name') : "Unassigned"%></span>
 	<span id="due-date"><%=(due) ? 'due ' + moment(due).format('dddd MMMM D') : "No deadline"%></span>
 	</span>
