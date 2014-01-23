@@ -1,21 +1,23 @@
 <div id="new_project_div">
 	<form id="new_project_form">
 		<input
+			style="margin-top: 5px;"
 			type="text"
 			name="project[title]"
 			placeholder="Name the project"
 		>
 		<br>
 		<textarea
+			style="margin-top: 5px;"
 			name="project[description]"
 			placeholder="If you like, add a project description"
 		></textarea>
 		<br>
 
-		<label for="project_member_0">Invite people to join your project</label>
+		<label style="margin-top: 5px;" for="project_member_0">Invite people to join your project</label>
 		<br>
 
-		<input class="btn btn-primary" type="submit" id="submit_button" value="Start the project">
-		<button id="cancel_project" class="btn">Cancel</button>
+		<input class="btn btn-sherpa" type="submit" id="submit_button" value="Start the project">
+		<button class="btn btn-sherpa" id="cancel_project" class="btn">Cancel</button>
 	</form>
 </div>

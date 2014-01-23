@@ -20,6 +20,15 @@ $bubblegum: #FF85AD;
 	color: white;
 	font-family: "Dosis";
 }
+.navbar-brand:hover{
+	background: #62B5E6;
+}
+
+
+.sherpa-tab:hover {
+	background: #62B5E6;
+	color: #62B5E6;;
+}
 
 
 .sherpa-margin {
@@ -32,20 +41,34 @@ a.sherp-links {
 }
 
 .sherpaBasic {
-	background: white;
+	background-image: url('egg_shell.png');;
 }
 
 .sherpa-off {
 	background: #27435E;
 	color: white;
-
 }
 
+.sherpa-square{
+	width: 120px;
+	height: 120px;
+	background: #27435E;
+	-moz-border-radius: 15px;
+	border-radius: 15px;
+}
+.sherpa-square:hover {
+	background: gray;
+}
 .btn-sherpa {
 	color: white;
 	background: #6dc9ff;
 	font-style: bold;
 	font-family: "Dosis";
+}
+
+.btn-sherpa:hover {
+	background: #62B5E6;
+	color: #EFFFFF;
 }
 
 .sherpa-list {
@@ -54,11 +77,14 @@ a.sherp-links {
 	border-radius: 15px;
 	border-color: #27435E;
 	border-style: solid;
+	padding-left: 10px;
+	padding-top: 2px;
+	padding-bottom: 2px
 }
 
 .sherpa-landing {
 	background-image: url('/assets/himalaya.jpg');
-	filter: blur(2px);
+	height: 100%;
 }
 
 .sherpa-todo {

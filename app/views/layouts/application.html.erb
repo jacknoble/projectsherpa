@@ -25,10 +25,10 @@
 	<div class="">
 		<a href="#"
 			class="sherpa-brand navbar-brand dropdown-toggle"
-			data-toggle="dropdown">
+			>
 			Projectsherpa
 		</a>
-    <ul class="nav navbar-nav pull-left">
+    <ul class="nav navbar-nav pull-left sherpa-nav">
 			<%if logged_in?%>
 				<li><a class="sherp-links" href="#">Projects</a></li>
 				<li><a class="sherp-links" href="#calendar">Calendar</a></li>
@@ -58,7 +58,7 @@
 	>
 
 	<!-- container -->
-	<div class="sherpaBasic container" style="width: 80%; height: auto; min-height: 500px" >
+	<div class="sherpaBasic container" style="width: 80%; height: auto; min-height: 800px" >
 		<%= yield %>
 	</div>
 </body>

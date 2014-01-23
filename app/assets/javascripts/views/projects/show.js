@@ -46,7 +46,7 @@ Sherpa.Views.ShowProject = Backbone.View.extend({
 		})
 		this.$el.find('#discussions').html(discIndex.render().$el)
 		setTimeout(function() {
-			this.$el.find('a#discussion-tab').tab('show')
+			this.$el.find('a#discussions-tab').tab('show')
 		}.bind(this), 0)
 		var path = "/projects/" + this.model.id +"/discussions"
 		Backbone.history.navigate(path, {silent: true})

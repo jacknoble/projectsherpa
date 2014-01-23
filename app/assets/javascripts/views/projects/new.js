@@ -49,7 +49,7 @@ Sherpa.Views.NewProject = Backbone.View.extend({
 		$tmForm.droppable({
 			drop: function(event, ui) {
 				var $member = $(ui.draggable)
-				var value = $member.text().replace(/\t*/, '')
+				var value = $member.text()
 				var $input = $(event.target)
 				$input.val(value)
 				var id = $member.data('id')

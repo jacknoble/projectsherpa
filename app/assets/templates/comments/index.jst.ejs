@@ -1,13 +1,12 @@
+<button id="new_message" type="button" class="btn new_todo_list btn-sherpa" style="margin-top: 15px; margin-left: 15px; margin-bottom: 10px;">
+  <span class="glyphicon glyphicon-plus"></span> Discussion
+</button>
+
 <%comments.each(function(comment) { %>
-	<div class="well"><a href="<%='#comments/' + comment.escape('id')%>"><%=comment.escape('title')%></a>
+	<a href="<%='#comments/' + comment.escape('id')%>"><div class="sherpa-list" style="margin-left: 15px"><%=comment.escape('title')%>
 	<p>started by <%=comment.get('user').escape('name')%></p>
 	</div>
+	</a>
+	<br>
 
 <%})%>
-
-<button
-	class="btn btn-large"
-	style=""
-	id="new_message">
-		Add Discussion
-</button>

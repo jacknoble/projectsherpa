@@ -1,37 +1,35 @@
-<form
-	action="<%='api/projects/'+ project.id + '/documents'%>"
-	name="document[file]"
-	class="dropzone dz-clickables col-xs-4"
-	style="height: 100px; width: 400px; max-width: 60%"
-	enctype="multipart/form-data"
->
-<input type="hidden" name="document[project_id]" value="<%=project.id%>">
-
-</form>
-
 <div class="row">
+	<div class="col-xs-3">
+		<form
+			action="<%='api/projects/'+ project.id + '/documents'%>"
+			name="document[file]"
+			class="dropzone dz-clickables col-xs-4"
+			style="height: 160px; width: 130px; max-width: 75%; margin-top: 10px; -moz-border-radius: 5px; border-radius: 5px;"
+			enctype="multipart/form-data"
+		>
+		<input type="hidden" name="document[project_id]" value="<%=project.id%>">
+		</form>
+	</div>
+	<%documents.each(function(doc){%>
+	<div style="margin: 10px" class="col-xs-2">
+		<img
+			class="priview img-rounded"
+			data-id="<%=doc.id%>"
+			src="<%=doc.escape('thumb')%>"
+		>
 		<br>
+		<a
+			href="<%='#documents/' + doc.id +'/discussion'%>"
+			name='comments'
+			class="btn btn-xs comments"
+			data-id="<%=doc.id%>"
+		>
+		<%=doc.get('comments').length%> comments
+		</a>
+		<button class='btn-xs btn-sherpa' id="delete" data-id="<%=doc.id%>">
+			<span class="glyphicon glyphicon-trash"></span>
+		</button>
 
-		<%documents.each(function(doc){%>
-			<div style="margin: 10px" class="col-xs-2">
-				<img
-					class="priview img-rounded"
-					data-id="<%=doc.id%>"
-					src="<%=doc.escape('thumb')%>"
-				>
-				<br>
-				<a
-					href="<%='#documents/' + doc.id +'/discussion'%>"
-					name='comments'
-					class="btn btn-xs comments"
-					data-id="<%=doc.id%>"
-				>
-				<%=doc.get('comments').length%> comments
-				</a>
-				<button class='btn-xs' id="delete" data-id="<%=doc.id%>">
-					<span class="glyphicon glyphicon-trash"></span>
-				</button>
-
-			</div>
-		<%})%>
+	</div>
+	<%})%>
 </div>
