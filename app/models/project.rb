@@ -17,7 +17,8 @@ class Project < ActiveRecord::Base
   has_many :documents
 
   after_save :add_creator_as_member
-
+  before_destroy {|project| TodoList.destroy_all "project_id = #{project.id}"}
+  before_destroy {|project| Document.destroy_all "project_id = #{project.id}"}
   def add_creator_as_member
     TeamMembership.create!(user_id: self.creator_id, project_id: self.id)
   end
