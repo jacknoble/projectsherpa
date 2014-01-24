@@ -32,7 +32,7 @@
 			<%if logged_in?%>
 				<li><a class="sherp-links" href="#">Projects</a></li>
 				<li><a class="sherp-links" href="#calendar">Calendar</a></li>
-				<li><a class="sherp-links" href="#feed">Feed</a></li>
+				<!-- <li><a class="sherp-links" href="#feed">Feed</a></li> -->
 				<li ><%=link_to("Logout", session_url, :method => :delete, :class=>"sherp-links")%></li>
 			<%else%>
 				<li><a class="sherp-links" href="<%= new_session_url %>">Login</a></li>

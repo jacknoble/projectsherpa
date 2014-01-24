@@ -9,7 +9,8 @@ Sherpa.Views.ShowProject = Backbone.View.extend({
 		"click a#todo-lists-tab": "todos",
 		"click a#discussions-tab": "discussions",
 		"click a#delete_project": "deleteProject",
-		"click a#documents-tab":"documents"
+		"click a#documents-tab":"documents",
+		// "click #description": "editDescription"
 	},
 
 	render: function() {
@@ -23,6 +24,11 @@ Sherpa.Views.ShowProject = Backbone.View.extend({
 		}
 		return this;
 	},
+	//
+	// editDescription: function(event) {
+	// 	event.preventDefault
+	// 	$form = $(<input)
+	// }
 
 	todos: function(event) {
 		event && event.preventDefault();
