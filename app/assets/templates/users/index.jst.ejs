@@ -3,7 +3,7 @@
 	<ul>
 		<%user.get("company").get("employees").forEach(function(employee) { %>
 			<%if (employee.id !== user.id){%>
-			<span class="emp-name"data-id="<%=employee.id%>"><img class="img-circle" style="width: 40%" src="<%=employee.escape('photo')%>"><%=employee.escape('name')%></span>
+			<span class="emp-name"data-id="<%=employee.id%>"><img class="img-circle" style="width: 40%;" src="<%=employee.escape('photo')%>"><%=employee.escape('name')%></span>
 				<br>
 			<%}%>
 		<%});%>
