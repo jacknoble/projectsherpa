@@ -1,17 +1,23 @@
 Sherpa.Views.ShowTodo = Backbone.View.extend({
 	template: JST['todo_list_items/show'],
 
+	discTemp: JST['todo_list_items/disc'],
+
 	events: {
 		"click #check-off":"completeTodo"
 	},
 	render: function (){
 		var assignedUser = this.model.assignedUser();
 		this.$el.html(this.template({todo: this.model, assigned: assignedUser}));
+		this.$el.append(this.discTemp({todo: this.model}))
 		return this
 	},
+	tagName: "li",
 
 	attributes: {
-		class: "sherpa-todo"
+		class: "sherpa-todo",
+		style: "margin-top: 5px;"
+
 	},
 
 	completeTodo: function(event) {

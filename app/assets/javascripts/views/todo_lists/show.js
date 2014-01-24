@@ -26,8 +26,6 @@ Sherpa.Views.ShowTodoList = Backbone.View.extend({
 
 	editTemp: JST['todo_lists/edit'],
 
-	discTemp: JST['todo_list_items/disc'],
-
 	render : function() {
 		this.$el.html(this.template({list: this.model}))
 		var items = this.model.get("todo_list_items");
@@ -35,10 +33,13 @@ Sherpa.Views.ShowTodoList = Backbone.View.extend({
 		items.each(function (item) {
 			if (!item.get('completed')) {
 				var showTodo = new Sherpa.Views.ShowTodo({model: item});
-				var disc = that.discTemp({todo: item})
 				$(that.$el.find('#todo_index'))
 					.append(showTodo.render().$el)
-					.append(disc);
+			}
+		})
+		$(this.$el.find('#todo_index')).sortable({
+			update: function(event, ui) {
+				debugger
 			}
 		})
 		return this;
