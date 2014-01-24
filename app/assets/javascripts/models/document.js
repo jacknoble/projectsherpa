@@ -18,7 +18,7 @@ Sherpa.Models.Document = Backbone.Model.extend({
 	parse: function(data) {
 		var comments = new Sherpa.Collections.DocumentComments(
 			data.comments,
-			{docID: data.id}
+			{docID: data.id, parse: true}
 		)
 		data.comments = comments
 		return data
