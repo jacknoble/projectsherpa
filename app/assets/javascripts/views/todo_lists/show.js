@@ -37,30 +37,43 @@ Sherpa.Views.ShowTodoList = Backbone.View.extend({
 					.append(showTodo.render().$el)
 			}
 		})
-	// 	this.$el.find('#todo_index').sortable({
-// 			// update: function(event, ui) {
-// // 				var movedId = ui.item.data('id')
-// // 				var reorderdId
-// // 				var last = ui.item.last();
-// // 				var next = ui.item.next();
-// // 				if (last.data('id') === movedId) {
-// // 					moved.set('order', 0)
-// // 					reorderedId = next.data('id')
-// // 				} else if (next.data('id') === movedId) {
-// // 					moved.set('order', 1)
-// // 					reorderedId = last.data('id')
-// // 				} else {
-// // 					reorderedId = movedId
-// // 				}
-// // 				var reordered = that.model.get('todo_list_items').get(reorderedId)
-// // 				var nextOrder reordered.next().data('order')
-// // 				var lastOrder reordered.last().data('order')
-// // 				var avg = nextOrdre / lastOrder
-// // 				reordrered
-// 			}
-// 		})
+		// this.sortable()
 		return this;
 	},
+
+	// sortable: function() {
+// 		var that = this;
+// 		this.$el.find('#todo_index').sortable({
+// 			update: function(event, ui) {
+// 				var item = ui.item
+// 				var todos = that.model.get('todo_list_items')
+// 				var movedId = item.data('id')
+// 				var moved = todos.get(movedId)
+// 				var reordered;
+// 				var last = ui.item.last();
+// 				var next = ui.item.next();
+// 				if (last.data('id') === movedId) {
+// 					moved.set('order', 0)
+// 					reordered = next
+// 					var nextOrder = reordered.next();
+// 					var lastOrder = ui.item
+// 				} else if (next.data('id') === movedId) {
+// 					moved.set('order', 1)
+// 					reordered = last
+// 					var lastOrder = reordered.last();
+// 					var nextOrder = ui.item
+// 				} else {
+// 					reordered = ui.item
+// 				}
+// 				debugger
+// 				var avg = (nextOrder.data('order') / lastOrder.data('order')) * 2;
+// 				var id = reordered.data('id');
+// 				var reorderedModel = that.model.get('todo_list_items').get(id);
+// 				reorderedModel.set('order', avg);
+// 				reorderedModel.save();
+// 			}
+// 		})
+// 	},
 
 	newTodo: function(event) {
 		event.preventDefault();
