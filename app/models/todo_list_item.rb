@@ -3,7 +3,7 @@ class TodoListItem < ActiveRecord::Base
 
   validates :name, :presence => true
 
-  before_validation :ensure_order, :on => [:create]
+  before_validation :ensure_order, :on => :create
 
   belongs_to(
     :user,
