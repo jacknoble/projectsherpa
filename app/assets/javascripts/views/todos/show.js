@@ -14,10 +14,12 @@ Sherpa.Views.ShowTodo = Backbone.View.extend({
 	},
 	tagName: "li",
 
-	attributes: {
-		class: "sherpa-todo",
-		style: "margin-top: 5px;"
-
+	attributes: function() {
+		return {
+			class: "sherpa-todo",
+			style: "margin-top: 5px;",
+			"data-id": this.model.id
+		}
 	},
 
 	completeTodo: function(event) {

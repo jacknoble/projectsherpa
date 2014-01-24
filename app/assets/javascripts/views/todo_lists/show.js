@@ -37,11 +37,28 @@ Sherpa.Views.ShowTodoList = Backbone.View.extend({
 					.append(showTodo.render().$el)
 			}
 		})
-		$(this.$el.find('#todo_index')).sortable({
-			update: function(event, ui) {
-				debugger
-			}
-		})
+	// 	this.$el.find('#todo_index').sortable({
+// 			// update: function(event, ui) {
+// // 				var movedId = ui.item.data('id')
+// // 				var reorderdId
+// // 				var last = ui.item.last();
+// // 				var next = ui.item.next();
+// // 				if (last.data('id') === movedId) {
+// // 					moved.set('order', 0)
+// // 					reorderedId = next.data('id')
+// // 				} else if (next.data('id') === movedId) {
+// // 					moved.set('order', 1)
+// // 					reorderedId = last.data('id')
+// // 				} else {
+// // 					reorderedId = movedId
+// // 				}
+// // 				var reordered = that.model.get('todo_list_items').get(reorderedId)
+// // 				var nextOrder reordered.next().data('order')
+// // 				var lastOrder reordered.last().data('order')
+// // 				var avg = nextOrdre / lastOrder
+// // 				reordrered
+// 			}
+// 		})
 		return this;
 	},
 
