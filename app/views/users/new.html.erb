@@ -6,7 +6,7 @@
 			<br>
 			<br>
 			<%= render partial: "form", locals: {user: @user, purpose: :new} %>
-			<p>Already a Projectsherpa user? <%=link_to "Sign in.", new_session_url%></p>
+			<p style="color: white;">Already a Projectsherpa user? <%=link_to "Sign in.", new_session_url, :style=> "color: white;"%></p>
 		  <p style="padding-left: 100px">
 				<%=render partial: "sessions/demo"%>
 			</p>

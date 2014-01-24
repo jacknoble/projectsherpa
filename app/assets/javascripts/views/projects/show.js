@@ -28,7 +28,7 @@ Sherpa.Views.ShowProject = Backbone.View.extend({
 	// editDescription: function(event) {
 	// 	event.preventDefault
 	// 	$form = $(<input)
-	// }
+	// },
 
 	todos: function(event) {
 		event && event.preventDefault();
