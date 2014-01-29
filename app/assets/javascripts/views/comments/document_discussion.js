@@ -12,16 +12,11 @@ Sherpa.Views.DocumentDiscussion = Backbone.View.extend({
 		"click #reply":"reply"
 	},
 	render: function(){
-		debugger
-		//comments add todo_item form to top of modal, but breaks modal on update
 		var modal= this.template({doc: this.model})
-		// var todoView = new Sherpa.Views.TodoForm({model: this.model}).render()
-	// 	var $todoView = todoView.render().$el
 		this.$el.html(modal)
 		var that = this
 		this.collection.each(function(comment) {
 			that.$('#comments').append(that.sub_template({comment: comment}))
-			// that.$('#todo_form').html(todoView.$el)
 		})
 		return this;
 	},

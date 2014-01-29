@@ -3,13 +3,17 @@
     <div class="modal-header">
       <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 			<div>
-				<object data="<%=doc.escape('file')%>" type="<%=doc.get('file_type')%>" max-width="800" height="500">
+				<object data="<%=doc.escape('file')%>"
+				 type="<%=doc.get('file_type')%>" 
+					max-width="800px"
+					height="<%=(doc.get('file_type') === 'application/pdf') ? '600px' : 'auto'%>"
+					width="<%=(doc.get('file_type') === 'application/pdf') ? '800px' : '500px'%>"
+				>
 					alt : <a href="<%=doc.escape('file')%>"> <%=doc.escape('file')%></a>
 				</object>
 			</div>
-			</div>
-    </div>
-    <div class="modal-body">
+		</div>
+	  <div class="modal-body">
 			<div id="comments">
 			</div>
 			<button
@@ -17,9 +21,9 @@
 				id="reply">
 				Reply
 			</button>
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-sherpa" data-dismiss="modal">Close</button>
-    </div>
+	  </div>
+	  <div class="modal-footer">
+	    <button type="button" class="btn btn-sherpa" data-dismiss="modal">Close</button>
+	  </div>
   </div><!-- /.modal-content -->
 </div><!-- /.modal-dialog -->
