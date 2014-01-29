@@ -4,12 +4,14 @@ Sherpa.Views.ShowProject = Backbone.View.extend({
 	},
 
 	template: JST["projects/show"],
+	deleteTemplate: JST["projects/delete_confirmation"],
 
 	events: {
 		"click a#todo-lists-tab": "todos",
 		"click a#discussions-tab": "discussions",
-		"click a#delete_project": "deleteProject",
+		"click a#delete_project": "confirmDelete",
 		"click a#documents-tab":"documents",
+		"click #btnYes":"deleteProject"
 		// "click #description": "editDescription"
 	},
 
@@ -74,10 +76,25 @@ Sherpa.Views.ShowProject = Backbone.View.extend({
 
 	deleteProject: function(event) {
 		event.preventDefault();
+
 		this.model.destroy({
-			success: Backbone.history.navigate("/", {trigger: true})
+			success: function(){
+				$('body').removeClass('modal-open');
+				$('.modal-backdrop').remove();
+				Backbone.history.navigate("/", {trigger: true})
+			} 
 		})
 	},
+
+	confirmDelete: function(event) {
+		event.preventDefault();
+		this.$el.append(this.deleteTemplate)
+		this.$el.find("#modal-dialog").modal();
+		this.$el.on('hide.bs.modal', function(e) {
+			$('body').removeClass('modal-open');
+			$('.modal-backdrop').remove();
+		})
+	}
 
 
 })
