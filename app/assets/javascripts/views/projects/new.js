@@ -27,7 +27,7 @@ Sherpa.Views.NewProject = Backbone.View.extend({
 			success: function(model) {
 				Sherpa.user.get("projects").add(newProject)
 				Sherpa.currentProject = model
-				Backbone.history.navigate('projects/' + newProject.get("id"),
+				Backbone.history.navigate('projects/' + newProject.get("id") + '/todos',
 					{trigger: true}
 				)
 			}

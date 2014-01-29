@@ -27,7 +27,7 @@ Sherpa.Views.DiscussTodo = Backbone.View.extend({
 	reply: function(event){
 		event.preventDefault();
 		var replyView = new Sherpa.Views.NewComment({
-			parentOb: "document",
+			parentOb: "todo_list_item",
 			parentOb_id: this.model.id,
 			collection: this.collection
 		})

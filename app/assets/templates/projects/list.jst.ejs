@@ -4,7 +4,7 @@
 	</div>
 		<%projects.forEach(function(project){ %>
 		<div class="col-xs-2 col-xs-offset-1">
-			<a class="sherp-links project-square" href=<%= "#/projects/" + project.id%>>
+			<a class="sherp-links project-square" href=<%= "#/projects/" + project.id + "/todos"%>>
 				<div class="sherpa-square" data-id="<%=project.id%>">
 					<p align="center" style="margin-top: 15px; padding-top: 10px"><%= project.escape('title') %>
 					</p>
