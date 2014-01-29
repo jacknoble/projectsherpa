@@ -12,6 +12,7 @@ gem 'figaro'
 gem 'paperclip'
 gem 'aws-sdk'
 gem 'dropzonejs-rails'
+gem 'newrelic_rpm'
 
 group :development, :test do
   gem 'rspec-rails'
