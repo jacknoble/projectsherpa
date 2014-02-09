@@ -1,7 +1,8 @@
 Sherpa.Views.ShowTodoList = Backbone.View.extend({
 	initialize: function() {
+		this.collection = this.model.get('todo_list_items')
 		this.listenTo(
-			this.model.get('todo_list_items'), "add reset remove", this.render
+			this.collection, "add reset remove", this.render
 		);
 		this.listenTo(this.model, "sync", this.render)
 	},
@@ -37,6 +38,7 @@ Sherpa.Views.ShowTodoList = Backbone.View.extend({
 			}
 		})
 		this.sortable()
+		this.dropable()
 		return this;
 	},
 
@@ -46,6 +48,24 @@ Sherpa.Views.ShowTodoList = Backbone.View.extend({
 			update: function(event, ui) {
 				var item = ui.item
 				that.updateOrder(item);
+			}
+		})
+	},
+
+	dropable: function() {
+		var that = this
+		this.$el.droppable({
+			drop: function(event, ui) {
+				var todoId = $(ui.draggable).data('id')
+				var todo = Sherpa.Collections.todos.get(todoId)
+				if (todo.get('todo_list_id') !== that.model.id){
+					todo.set('todo_list_id', that.model.id)
+					$(ui.draggable).remove()
+					that.collection.add(todo)
+					todo.save({todo_list_id: that.model.id}, {
+						success: function() {}
+					})
+				}
 			}
 		})
 	},

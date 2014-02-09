@@ -14,6 +14,8 @@ class Api::TodoListsController < ApplicationController
   end
 
   def show
+    @list = TodoList.find(params[:id])
+    render :partial => 'api/todo_lists/todo_list'
   end
 
   def update
