@@ -56,14 +56,18 @@ Sherpa.Views.ShowTodoList = Backbone.View.extend({
 		var that = this
 		this.$el.droppable({
 			drop: function(event, ui) {
-				var todoId = $(ui.draggable).data('id')
+				$item = $(ui.draggable)
+				var todoId = $item.data('id')
 				var todo = Sherpa.Collections.todos.get(todoId)
+				var oldList = Sherpa.Collections.lists.get(todo.get('todo_list_id'))
 				if (todo.get('todo_list_id') !== that.model.id){
-					todo.set('todo_list_id', that.model.id)
-					$(ui.draggable).remove()
-					that.collection.add(todo)
+					$item.remove()
 					todo.save({todo_list_id: that.model.id}, {
-						success: function() {}
+						success: function(data) {
+							debugger
+							oldList.get('todo_list_items').remove(todo)
+							that.collection.add(todo)
+						}
 					})
 				}
 			}

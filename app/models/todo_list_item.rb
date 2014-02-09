@@ -3,7 +3,10 @@ class TodoListItem < ActiveRecord::Base
 
   validates :name, :presence => true
 
-  before_validation :ensure_order, :on => :create
+  before_validation(
+    :ensure_order, 
+    :if => Proc.new {|a| a.order.nil? || a.todo_list_id_changed?}
+  )
 
   belongs_to(
     :user,
@@ -20,27 +23,26 @@ class TodoListItem < ActiveRecord::Base
     (self.count > 2) ? self.last(2) : [self.last]
   end
 
-  def siblings
+  def family
     TodoListItem.where('todo_list_id = ?', self.todo_list_id)
   end
 
   def ensure_order
-    if self.order.nil?
-      sibs = self.siblings
-      count = sibs.count
-      if count == 0
-        self.order = 0
-      elsif count == 1
-        self.order = 1
-      else
-        self.order = 1
-        last_two = sibs.last(2)
-        last_two[1].order = (1 + last_two[0].order) / 2.0
-        TodoListItem.transaction do 
-          last_two.each(&:save!)
-        end
+    fam = self.family
+    count = fam.count
+    if count == 0
+      self.order = 0
+    elsif count == 1
+      self.order = 1
+    else
+      self.order = 1
+      last_two = fam.last(2)
+      last_two[1].order = (1 + last_two[0].order) / 2.0
+      TodoListItem.transaction do 
+        last_two.each(&:save!)
       end
     end
+    p self.order
   end
 
 end
