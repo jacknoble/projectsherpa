@@ -11,14 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140124003933) do
+ActiveRecord::Schema.define(:version => 20140204041449) do
 
   create_table "comments", :force => true do |t|
     t.string  "title"
     t.text    "body"
+    t.integer "user_id"
     t.integer "commentable_id"
     t.string  "commentable_type"
-    t.integer "user_id"
   end
 
   create_table "companies", :force => true do |t|
@@ -43,6 +43,25 @@ ActiveRecord::Schema.define(:version => 20140124003933) do
 
   add_index "documents", ["project_id"], :name => "index_documents_on_project_id"
   add_index "documents", ["user_id"], :name => "index_documents_on_user_id"
+
+  create_table "photo_sets", :force => true do |t|
+    t.string   "location"
+    t.string   "lat"
+    t.string   "lng"
+    t.string   "radius"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.string   "map"
+  end
+
+  create_table "photos", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.string   "image"
+    t.integer  "set_id"
+  end
+
+  add_index "photos", ["set_id"], :name => "index_photos_on_set_id"
 
   create_table "projects", :force => true do |t|
     t.string   "title",       :null => false

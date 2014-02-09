@@ -1,5 +1,5 @@
 <%var due = todo.escape('deadline')%>
-	<button class="btn btn-xs btn-sherpa" name="todo_list_item[completed]" value="true" id="check-off" data-id="<%=todo.get('id')%>">
+	<button class="btn btn-xs btn-sherpa" name="todo_list_item[completed]" value="true" id="check-off" data-id="<%=todo.id%>">
 		<span class="glyphicon glyphicon-check"></span>
 	</button>
 	<span class="toggle-edit" data-id="<%=todo.get('id')%>">

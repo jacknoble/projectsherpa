@@ -16,7 +16,31 @@ class TodoListItem < ActiveRecord::Base
   has_one :project, :through => :todo_list
   has_many :comments, :as => :commentable
 
-  def ensure_order
-    self.order ||= rand
+  def self.last_or_two
+    (self.count > 2) ? self.last(2) : [self.last]
   end
+
+  def siblings
+    TodoListItem.where('todo_list_id = ?', self.todo_list_id)
+  end
+
+  def ensure_order
+    if self.order.nil?
+      sibs = self.siblings
+      count = sibs.count
+      if count == 0
+        self.order = 0
+      elsif count == 1
+        self.order = 1
+      else
+        self.order = 1
+        last_two = sibs.last(2)
+        last_two[1].order = (1 + last_two[0].order) / 2.0
+        TodoListItem.transaction do 
+          last_two.each(&:save!)
+        end
+      end
+    end
+  end
+
 end

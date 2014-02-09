@@ -1,4 +1,8 @@
 Sherpa.Views.ShowTodo = Backbone.View.extend({
+	initialize: function() {
+		this.listenTo(this.model, 'change', this.render)
+	},
+
 	template: JST['todo_list_items/show'],
 
 	discTemp: JST['todo_list_items/disc'],
@@ -10,6 +14,7 @@ Sherpa.Views.ShowTodo = Backbone.View.extend({
 		var assignedUser = this.model.assignedUser();
 		this.$el.html(this.template({todo: this.model, assigned: assignedUser}));
 		this.$el.append(this.discTemp({todo: this.model}))
+		this.$el.attr('data-order', this.model.escape('order'))
 		return this
 	},
 	tagName: "li",
@@ -24,7 +29,6 @@ Sherpa.Views.ShowTodo = Backbone.View.extend({
 
 	completeTodo: function(event) {
 		event.preventDefault();
-		var id = $(event.target).data('id')
 		var todo = Sherpa.Collections.todos.get(id)
 		todo.save({completed: true}, {
 			success: function() {

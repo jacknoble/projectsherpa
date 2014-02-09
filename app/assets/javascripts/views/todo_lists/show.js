@@ -1,9 +1,8 @@
 Sherpa.Views.ShowTodoList = Backbone.View.extend({
 	initialize: function() {
 		this.listenTo(
-			this.model.get('todo_list_items'), "add reset change remove", this.render
+			this.model.get('todo_list_items'), "add reset remove", this.render
 		);
-
 		this.listenTo(this.model, "sync", this.render)
 	},
 	events: {
@@ -37,43 +36,67 @@ Sherpa.Views.ShowTodoList = Backbone.View.extend({
 					.append(showTodo.render().$el)
 			}
 		})
-		// this.sortable()
+		this.sortable()
 		return this;
 	},
 
-	// sortable: function() {
-// 		var that = this;
-// 		this.$el.find('#todo_index').sortable({
-// 			update: function(event, ui) {
-// 				var item = ui.item
-// 				var todos = that.model.get('todo_list_items')
-// 				var movedId = item.data('id')
-// 				var moved = todos.get(movedId)
-// 				var reordered;
-// 				var last = ui.item.last();
-// 				var next = ui.item.next();
-// 				if (last.data('id') === movedId) {
-// 					moved.set('order', 0)
-// 					reordered = next
-// 					var nextOrder = reordered.next();
-// 					var lastOrder = ui.item
-// 				} else if (next.data('id') === movedId) {
-// 					moved.set('order', 1)
-// 					reordered = last
-// 					var lastOrder = reordered.last();
-// 					var nextOrder = ui.item
-// 				} else {
-// 					reordered = ui.item
-// 				}
-// 				debugger
-// 				var avg = (nextOrder.data('order') / lastOrder.data('order')) * 2;
-// 				var id = reordered.data('id');
-// 				var reorderedModel = that.model.get('todo_list_items').get(id);
-// 				reorderedModel.set('order', avg);
-// 				reorderedModel.save();
-// 			}
-// 		})
-// 	},
+	sortable: function() {
+		var that = this;
+		this.$el.find('#todo_index').sortable({
+			update: function(event, ui) {
+				var item = ui.item
+				that.updateOrder(item);
+			}
+		})
+	},
+
+	setOrder: function(item, order) {
+		$(item).data('order', order)
+		var bbItem = Sherpa.Collections.todos.get($(item).data('id'));
+		bbItem.save({order: order}, {
+			success: function(data){
+			}
+		})
+	},
+
+	updateOrder: function(item) {
+		var index = item.index();
+		var list = item.parent().children()
+		var length = item.siblings().length + 1;
+		var itemToReset = false;
+		if (index === 0){
+			this.setOrder(item, 0.0);
+			if (length === 2) {
+				this.setOrder(list.get(1), 1.0)
+			} else if (length > 2) {
+				itemToReset = list.get(index + 1)
+			}
+		} else if (index === length-1) {
+			this.setOrder(item, 1.0)
+			if (length === 2) {
+				this.setOrder(list.get(0), 0.0)
+			} else if (length > 2) {
+				itemToReset = list.get(index-1)
+			}
+		} else {
+			itemToReset = item;
+		}
+
+		if (itemToReset) {
+			this.resetItemOrder(itemToReset)
+		}
+		
+	},
+
+	resetItemOrder: function(item) {
+		var index = $(item).index()
+		var list = $(item).parent().children()
+		var lastOrder = $(list.get(index-1)).data('order');
+		var nextOrder = $(list.get(index+1)).data('order');
+		var newOrder = (lastOrder + nextOrder) / 2.0;
+		this.setOrder(item, newOrder)
+	},
+
 
 	newTodo: function(event) {
 		event.preventDefault();

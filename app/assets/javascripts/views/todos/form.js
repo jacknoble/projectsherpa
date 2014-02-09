@@ -36,6 +36,9 @@ Sherpa.Views.TodoForm = Backbone.View.extend({
 		var collection = this.collection;
 		todo.save(data.todo_list_item, {
 			success: function(data) {
+				if (!existingTodo && collection.length > 1) {
+					collection.last().fetch()
+				}
 				collection.add(todo, {merge: true});
 			},
 

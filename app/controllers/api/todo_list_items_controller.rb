@@ -2,11 +2,20 @@ class Api::TodoListItemsController < ApplicationController
 
   def create
     @todo_list_item = TodoListItem.new(params[:todo_list_item])
-    if @todo_list_item.save!
+    if @todo_list_item.save
       render :partial => "api/todo_list_items/todo_list_item"
     else
       render :json => @todo_list_item.errors.full_messages,
       :status => :unprocessable_entity
+    end
+  end
+
+  def show
+    @todo_list_item = TodoListItem.find(params[:id])
+    if @todo_list_item
+      render :partial => "api/todo_list_items/todo_list_item"
+    else
+      render :json => ["Something went wrong"]
     end
   end
 
