@@ -48,7 +48,9 @@ Sherpa.Views.ShowTodoList = Backbone.View.extend({
 			update: function(event, ui) {
 				var item = ui.item
 				that.updateOrder(item);
-			}
+			},
+			forcePlaceholderSize: true,
+			revert: 175
 		})
 	},
 
@@ -61,6 +63,7 @@ Sherpa.Views.ShowTodoList = Backbone.View.extend({
 				var todo = Sherpa.Collections.todos.get(todoId)
 				if (todo.get('todo_list_id') !== that.model.id){
 					$item.remove()
+					that.$el.find('#todo_index').append($item)
 					var oldList = Sherpa.Collections.lists.get(todo.get('todo_list_id'))
 					todo.save({todo_list_id: that.model.id}, {
 						success: function(data) {
