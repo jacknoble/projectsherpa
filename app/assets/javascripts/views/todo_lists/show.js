@@ -50,11 +50,7 @@ Sherpa.Views.ShowTodoList = Backbone.View.extend({
 				that.updateOrder(item);
 			},
 			forcePlaceholderSize: true,
-			revert: 300,
-			stop: function(){
-				setTimeout(300)
-			}
-
+			revert: 100,
 		})
 	},
 
@@ -69,11 +65,12 @@ Sherpa.Views.ShowTodoList = Backbone.View.extend({
 					$item.remove()
 					that.$el.find('#todo_index').append($item)
 					var oldList = Sherpa.Collections.lists.get(todo.get('todo_list_id'))
+					last = that.collection.last()
+					that.collection.add(todo)
+					oldList.get('todo_list_items').remove(todo)
 					todo.save({todo_list_id: that.model.id}, {
 						success: function(data) {
-							oldList.get('todo_list_items').remove(todo)
-							that.collection.add(todo)
-							that.collection.last().fetch()
+							last.fetch()
 						}
 					})
 				}
