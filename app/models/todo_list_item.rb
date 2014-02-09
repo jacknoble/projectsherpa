@@ -30,19 +30,15 @@ class TodoListItem < ActiveRecord::Base
   def ensure_order
     fam = self.family
     count = fam.count
-    if count == 0
-      self.order = 0
-    elsif count == 1
-      self.order = 1
-    else
-      self.order = 1
+    self.order = (count == 0) ? 0 : 1
+    if count > 1
       last_two = fam.last(2)
       last_two[1].order = (1 + last_two[0].order) / 2.0
       TodoListItem.transaction do 
         last_two.each(&:save!)
       end
     end
-    p self.order
+    p "in model order is #{self.order}"
   end
 
 end

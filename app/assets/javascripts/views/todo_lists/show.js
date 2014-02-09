@@ -59,14 +59,14 @@ Sherpa.Views.ShowTodoList = Backbone.View.extend({
 				$item = $(ui.draggable)
 				var todoId = $item.data('id')
 				var todo = Sherpa.Collections.todos.get(todoId)
-				var oldList = Sherpa.Collections.lists.get(todo.get('todo_list_id'))
 				if (todo.get('todo_list_id') !== that.model.id){
 					$item.remove()
+					var oldList = Sherpa.Collections.lists.get(todo.get('todo_list_id'))
 					todo.save({todo_list_id: that.model.id}, {
 						success: function(data) {
-							debugger
 							oldList.get('todo_list_items').remove(todo)
 							that.collection.add(todo)
+							that.collection.last().fetch()
 						}
 					})
 				}
@@ -85,6 +85,9 @@ Sherpa.Views.ShowTodoList = Backbone.View.extend({
 
 	updateOrder: function(item) {
 		var index = item.index();
+		if (index === -1) {
+			$item.parent.sortable( "cancel" )
+		}
 		var list = item.parent().children()
 		var length = item.siblings().length + 1;
 		var itemToReset = false;
