@@ -10,7 +10,10 @@ class User < ActiveRecord::Base
             :presence => true
   validates :password, length: {minimum: 6}, if: :password_present?
 
-  before_validation :ensure_session_token, :add_lname_fname
+  before_validation(
+    :ensure_session_token,
+    :add_lname_fname, 
+  )
 
   has_many(
     :created_projects,
@@ -33,8 +36,8 @@ class User < ActiveRecord::Base
 
   has_attached_file :photo, :styles => {
     :big => "600x600>",
-    :small => "50x50#"
-  }
+    :small => "50x50#",
+  }, :default_url => "/assets /portrait.jpg"
   #
   # validates_attachment :photo,
   #   :content_type => { :content_type => ["image/jpg", "image/gif", "image/png"] }

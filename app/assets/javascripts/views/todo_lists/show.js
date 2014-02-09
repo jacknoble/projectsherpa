@@ -50,7 +50,7 @@ Sherpa.Views.ShowTodoList = Backbone.View.extend({
 				that.updateOrder(item);
 			},
 			forcePlaceholderSize: true,
-			revert: 175
+			revert: 300
 		})
 	},
 
