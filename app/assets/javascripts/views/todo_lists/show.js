@@ -27,7 +27,6 @@ Sherpa.Views.ShowTodoList = Backbone.View.extend({
 	editTemp: JST['todo_lists/edit'],
 
 	render : function() {
-		console.log(this.collection)
 		this.$el.html(this.template({list: this.model}))
 		var items = this.collection;
 		var that = this;
