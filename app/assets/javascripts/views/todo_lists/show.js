@@ -1,10 +1,10 @@
 Sherpa.Views.ShowTodoList = Backbone.View.extend({
 	initialize: function() {
+		this.listenTo(this.model, "change:title", this.render)
 		this.collection = this.model.get('todo_list_items')
 		this.listenTo(
-			this.collection, "add reset remove", this.render
-		);
-		this.listenTo(this.model, "sync", this.render)
+			this.collection, "add remove", this.render
+		)
 	},
 	events: {
 		"click #add_todo":"newTodo",
@@ -19,7 +19,7 @@ Sherpa.Views.ShowTodoList = Backbone.View.extend({
 
 	attributes: {
 		class: "sherpa-list",
-		style: "margin-left: 15px; margin-top: 10px"
+		style: "margin-left: 15px; margin-top: 10px",
 	},
 
 	template: JST['todo_lists/show'],
@@ -27,8 +27,9 @@ Sherpa.Views.ShowTodoList = Backbone.View.extend({
 	editTemp: JST['todo_lists/edit'],
 
 	render : function() {
+		console.log(this.collection)
 		this.$el.html(this.template({list: this.model}))
-		var items = this.model.get("todo_list_items");
+		var items = this.collection;
 		var that = this;
 		items.each(function (item) {
 			if (!item.get('completed')) {
@@ -38,7 +39,6 @@ Sherpa.Views.ShowTodoList = Backbone.View.extend({
 			}
 		})
 		this.sortable()
-		this.dropable()
 		return this;
 	},
 
@@ -54,29 +54,7 @@ Sherpa.Views.ShowTodoList = Backbone.View.extend({
 		})
 	},
 
-	dropable: function() {
-		var that = this
-		this.$el.droppable({
-			drop: function(event, ui) {
-				$item = $(ui.draggable)
-				var todoId = $item.data('id')
-				var todo = Sherpa.Collections.todos.get(todoId)
-				if (todo.get('todo_list_id') !== that.model.id){
-					$item.remove()
-					that.$el.find('#todo_index').append($item)
-					var oldList = Sherpa.Collections.lists.get(todo.get('todo_list_id'))
-					last = that.collection.last()
-					that.collection.add(todo)
-					oldList.get('todo_list_items').remove(todo)
-					todo.save({todo_list_id: that.model.id}, {
-						success: function(data) {
-							last.fetch()
-						}
-					})
-				}
-			}
-		})
-	},
+	
 
 	setOrder: function(item, order) {
 		$(item).data('order', order)
@@ -176,7 +154,6 @@ Sherpa.Views.ShowTodoList = Backbone.View.extend({
 		var list = Sherpa.Collections.lists.get(id);
 		list.save(data.todo_list, {
 			success: function(){
-
 			}
 		})
 	},

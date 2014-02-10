@@ -19,9 +19,9 @@ class Api::TodoListsController < ApplicationController
   end
 
   def update
-    @todo_list = TodoList.find(params[:id])
-    if @todo_list.update_attributes(params[:todo_list])
-      render :json => @todo_list
+    @list = TodoList.find(params[:id])
+    if @list.update_attributes(params[:todo_list])
+      render :partial => 'api/todo_lists/todo_list'
     else
       render :status => 422
     end
