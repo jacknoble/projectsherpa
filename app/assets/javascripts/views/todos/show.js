@@ -1,6 +1,6 @@
 Sherpa.Views.ShowTodo = Backbone.View.extend({
 	initialize: function() {
-		this.listenTo(this.model, 'change', this.render)
+		this.listenTo(this.model, 'change sync', this.render)
 	},
 
 	template: JST['todo_list_items/show'],

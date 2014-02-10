@@ -54,7 +54,6 @@ Sherpa.Views.TodoForm = Backbone.View.extend({
 		var todo = this.collection.get(todoId)
 		todo.destroy({
 			success: function() {
-
 			},
 
 			error: function() {

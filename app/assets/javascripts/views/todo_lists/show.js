@@ -3,7 +3,7 @@ Sherpa.Views.ShowTodoList = Backbone.View.extend({
 		this.listenTo(this.model, "change:title", this.render)
 		this.collection = this.model.get('todo_list_items')
 		this.listenTo(
-			this.collection, "add remove", this.render
+			this.collection, "add change remove", this.render
 		)
 	},
 	events: {
