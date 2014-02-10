@@ -29,6 +29,7 @@ Sherpa.Views.ShowTodo = Backbone.View.extend({
 
 	completeTodo: function(event) {
 		event.preventDefault();
+		id = $(event.target).data('id')
 		var todo = Sherpa.Collections.todos.get(id)
 		todo.save({completed: true}, {
 			success: function() {
