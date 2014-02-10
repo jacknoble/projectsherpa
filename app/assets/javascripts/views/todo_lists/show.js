@@ -1,6 +1,6 @@
 Sherpa.Views.ShowTodoList = Backbone.View.extend({
 	initialize: function() {
-		this.listenTo(this.model, "change:title", this.render)
+		this.listenTo(this.model, "change", this.render)
 		this.collection = this.model.get('todo_list_items')
 		this.listenTo(
 			this.collection, "add change remove", this.render
@@ -11,7 +11,6 @@ Sherpa.Views.ShowTodoList = Backbone.View.extend({
 		"click .toggle-edit":"toggleEdit",
 		"click #cancel":"toggleShow",
 		"click #todo_title":"changeTitle",
-		"blur #todo_list_title":"updateTitle",
 		"click #update_list":"updateTitle",
 		"click #cancel_list_edit": "cancelEdit",
 		"click #delete":"deleteList"
@@ -148,7 +147,7 @@ Sherpa.Views.ShowTodoList = Backbone.View.extend({
 
 	updateTitle: function(event) {
 		event.preventDefault();
-		var data = $(event.currentTarget).serializeJSON()
+		var data = $(event.currentTarget).parent().serializeJSON()
 		var id = $(event.currentTarget).data('id')
 		var list = Sherpa.Collections.lists.get(id);
 		list.save(data.todo_list, {
