@@ -38,7 +38,6 @@ class TodoListItem < ActiveRecord::Base
         last_two.each(&:save!)
       end
     end
-    p "in model order is #{self.order}"
   end
 
 end
